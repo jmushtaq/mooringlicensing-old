@@ -297,7 +297,7 @@ export default {
                             if (vm.readonly){
                                 disabled_str = ' disabled '
                             }
-                            if (full.checked){
+                            if (full.checked && full.suitable_for_mooring){
                                 return '<input type="checkbox" class="mooring_on_approval_checkbox" data-mooring-on-approval-id="' + full.id + '"' + disabled_str + ' checked/>'
                             } else {
                                 return '<input type="checkbox" class="mooring_on_approval_checkbox" data-mooring-on-approval-id="' + full.id + '"' + disabled_str + '/>'
@@ -328,7 +328,8 @@ export default {
                         //visible: vm.show_col_id,
                         data: 'id',
                         mRender: function (data, type, full) {
-                            return full.site_licensee ? 'User requested' : 'RIA allocated';
+                            //return full.site_licensee ? 'User requested' : 'RIA allocated';
+                            return full.site_licensee;
                             //return '';
                         }
                     },
@@ -723,12 +724,12 @@ export default {
            let vm = this;
            //let apiary_site_id = e.target.getAttribute("data-apiary-site-id");
            let mooringOnApprovalId = this.getMooringOnApprovalIdFromEvent(e);
-           console.log(mooringOnApprovalId);
+           //console.log(mooringOnApprovalId);
            let checked_status = e.target.checked;
            //for (let i=0; i<this.apiary_sites_local.length; i++) {
            for (let mooring of this.authorisedUserMoorings) {
                if (mooring.id == mooringOnApprovalId) {
-                   console.log(e.target.checked)
+                   //console.log(e.target.checked)
                    mooring.checked = checked_status;
                }
            }
@@ -820,6 +821,7 @@ export default {
                             term: params.term,
                             type: 'public',
                             mooring_bay_id: vm.approval.mooring_bay_id,
+                            vessel_details_id: vm.proposal.vessel_details_id,
                         }
                         return query;
                     },

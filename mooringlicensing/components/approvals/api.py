@@ -15,6 +15,7 @@ from ledger.accounts.models import EmailUser
 from ledger.settings_base import TIME_ZONE
 from datetime import datetime
 
+from mooringlicensing import forms
 from mooringlicensing.components.proposals.email import send_create_mooring_licence_application_email_notification
 from mooringlicensing.components.main.decorators import basic_exception_handler
 from mooringlicensing.components.main.utils import add_cache_control
@@ -81,6 +82,16 @@ class GetSticker(views.APIView):
                         'text': sticker.number,
                         'approval_id': approval_history.approval.id,
                     })
+                elif sticker.approval:
+                    data_transform.append({
+                        'id': sticker.id,
+                        'text': sticker.number,
+                        'approval_id': sticker.approval.id,
+                    })
+                else:
+                    # Should not reach here
+                    pass
+
             return Response({"results": data_transform})
         return Response()
 
@@ -425,6 +436,41 @@ class ApprovalViewSet(viewsets.ModelViewSet):
                 })
         return Response(moorings)
 
+    @detail_route(methods=['POST'])
+    @renderer_classes((JSONRenderer,))
+    @basic_exception_handler
+    def request_new_stickers(self, request, *args, **kwargs):
+        # external
+        approval = self.get_object()
+        data = request.data
+
+        # TODO: Validation
+
+        sticker_action_details = []
+        # stickers = Sticker.objects.filter(status=Sticker.STICKER_STATUS_CURRENT, approval=approval)
+        stickers = Sticker.objects.filter(approval=approval)
+        for sticker in stickers:
+            # Update Sticker actsticker_action_details = {list: 1} [{'id': 73, 'sticker': 88, 'reason': 'fgfgsad', 'date_created': '2021-08-24T08:52:29.049638Z', 'date_updated': '2021-08-24T08:52:29.049715Z', 'date_of_lost_sticker': None, 'date_of_returned_sticker': None, 'action': 'Request new sticker', 'user': 132580, '… Viewion
+            data['sticker'] = sticker.id
+            data['action'] = 'Request new sticker'
+            data['user'] = request.user.id
+            serializer = StickerActionDetailSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            new_sticker_action_detail = serializer.save()
+            sticker_action_details.append(new_sticker_action_detail.id)
+
+        return Response({'sticker_action_detail_ids': sticker_action_details})
+
+    @detail_route(methods=['GET'])
+    @renderer_classes((JSONRenderer,))
+    @basic_exception_handler
+    def stickers(self, request, *args, **kwargs):
+        instance = self.get_object()
+
+        # TODO ??? return all the current stickers for this approval
+
+        return Response({'stickers': []})
+
     @detail_route(methods=['GET'])
     @renderer_classes((JSONRenderer,))
     @basic_exception_handler
@@ -698,10 +744,40 @@ class DcvAdmissionViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         data = request.data
-
         dcv_vessel = self._handle_dcv_vessel(request.data.get('dcv_vessel'), None)
 
-        data['submitter'] = request.user.id
+        if request.user.is_authenticated():
+            # Logged in user
+            # 1. DcvPermit exists
+            # 2. DcvPermit doesn't exist
+
+            submitter = request.user
+        else:
+            # Anonymous user
+            # 1. DcvPermit exists
+            # 2. DcvPermit doesn't exist
+            if dcv_vessel.dcv_permits.count():
+                # DcvPermit exists
+                submitter = dcv_vessel.dcv_permits.first().submitter
+            else:
+                # DcvPermit doesn't exist
+                email_address = request.data.get('email_address')
+                email_address_confirmation = request.data.get('email_address_confirmation')
+                skipper = request.data.get('skipper')
+                if email_address == email_address_confirmation:
+                    if skipper:
+                        this_user = EmailUser.objects.filter(email=email_address)
+                        if this_user:
+                            new_user = this_user.first()
+                        else:
+                            new_user = EmailUser.objects.create(email=email_address, first_name=skipper)
+                        submitter = new_user
+                    else:
+                        raise forms.ValidationError('Please fill the skipper field')
+                else:
+                    raise forms.ValidationError('Email addresses do not match')
+
+        data['submitter'] = submitter.id
         # data['fee_sid'] = fee_season_requested.get('id')
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
@@ -1048,6 +1124,7 @@ class StickerViewSet(viewsets.ModelViewSet):
     @detail_route(methods=['POST',])
     @basic_exception_handler
     def request_replacement(self, request, *args, **kwargs):
+        # internal
         sticker = self.get_object()
         data = request.data
 
@@ -1060,9 +1137,9 @@ class StickerViewSet(viewsets.ModelViewSet):
         details = serializer.save()
 
         # Sticker
-        new_sticker = sticker.request_replacement()
-        serializer = StickerSerializer(sticker)
-        return Response({'sticker': serializer.data})
+        # new_sticker = sticker.request_replacement(Sticker.STICKER_STATUS_LOST)
+        # serializer = StickerSerializer(sticker)
+        return Response({'sticker_action_detail_ids': [details.id,]})
 
 
 class StickerPaginatedViewSet(viewsets.ModelViewSet):

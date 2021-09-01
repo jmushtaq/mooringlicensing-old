@@ -308,6 +308,7 @@ class ApprovalSerializer(serializers.ModelSerializer):
     authorised_user_moorings = serializers.SerializerMethodField()
     authorised_user_moorings_detail = serializers.SerializerMethodField()
     can_reissue = serializers.SerializerMethodField()
+    can_external_action = serializers.SerializerMethodField()
     can_action = serializers.SerializerMethodField()
     can_reinstate = serializers.SerializerMethodField()
     #can_renew = serializers.SerializerMethodField()
@@ -350,6 +351,7 @@ class ApprovalSerializer(serializers.ModelSerializer):
             'authorised_user_moorings',
             'authorised_user_moorings_detail',
             'can_reissue',
+            'can_external_action',
             'can_action',
             'can_reinstate',
             #'can_renew',
@@ -376,6 +378,9 @@ class ApprovalSerializer(serializers.ModelSerializer):
         if obj.renewal_document and obj.renewal_document._file:
             return obj.renewal_document._file.url
         return None
+
+    def get_can_external_action(self,obj):
+        return obj.can_external_action
 
     def get_can_reissue(self,obj):
         return obj.can_reissue
@@ -493,6 +498,7 @@ class ApprovalSerializer(serializers.ModelSerializer):
                 moorings.append({
                     "id": moa.id,
                     "mooring_name": moa.mooring.name,
+                    "sticker": moa.sticker.number if moa.sticker else '',
                     "licensee": licence_holder_data.get('full_name') if licence_holder_data else '',
                     'allocated_by': 'Site Licensee' if moa.site_licensee else 'RIA',
                     "mobile": licence_holder_data.get('mobile_number') if licence_holder_data else '',
@@ -668,6 +674,7 @@ class ListApprovalSerializer(serializers.ModelSerializer):
     mooring_licence_vessels = serializers.SerializerMethodField()
     authorised_user_moorings = serializers.SerializerMethodField()
     can_reissue = serializers.SerializerMethodField()
+    can_external_action = serializers.SerializerMethodField()
     can_action = serializers.SerializerMethodField()
     can_reinstate = serializers.SerializerMethodField()
     #can_renew = serializers.SerializerMethodField()
@@ -706,6 +713,7 @@ class ListApprovalSerializer(serializers.ModelSerializer):
             'mooring_licence_vessels',
             'authorised_user_moorings',
             'can_reissue',
+            'can_external_action',
             'can_action',
             'can_reinstate',
             #'can_renew',
@@ -747,6 +755,7 @@ class ListApprovalSerializer(serializers.ModelSerializer):
             'mooring_licence_vessels',
             'authorised_user_moorings',
             'can_reissue',
+            'can_external_action',
             'can_action',
             'can_reinstate',
             #'can_renew',
@@ -786,6 +795,9 @@ class ListApprovalSerializer(serializers.ModelSerializer):
             return obj.renewal_document._file.url
         return None
 
+    def get_can_external_action(self,obj):
+        return obj.can_external_action
+
     def get_can_reissue(self,obj):
         return obj.can_reissue
 
@@ -810,7 +822,7 @@ class ListApprovalSerializer(serializers.ModelSerializer):
             for vessel_details in obj.child_obj.vessel_details_list:
                 regos += '{}\n'.format(vessel_details.vessel.rego_no)
         else:
-            regos += '{}\n'.format(obj.current_proposal.vessel_details.vessel.rego_no)
+            regos += '{}\n'.format(obj.current_proposal.vessel_details.vessel.rego_no) if obj.current_proposal.vessel_details else ''
         return regos
 
     def get_mooring_licence_vessels(self, obj):

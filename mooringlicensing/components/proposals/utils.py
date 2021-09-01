@@ -535,8 +535,8 @@ def submit_vessel_data(instance, request, vessel_data):
         elif instance.vessel_details.vessel_applicable_length < min_mooring_vessel_size:
             raise serializers.ValidationError("Vessel must be at least {}m in length".format(min_mooring_vessel_size_str))
         elif instance.proposal_type.code in [PROPOSAL_TYPE_RENEWAL, PROPOSAL_TYPE_AMENDMENT] and (
-                instance.vessel_details.vessel_applicable_length > instance.approval.mooring.vessel_size_limit or
-                instance.vessel_details.vessel_draft > instance.approval.mooring.vessel_draft_limit
+                instance.vessel_details.vessel_applicable_length > instance.approval.child_obj.mooring.vessel_size_limit or
+                instance.vessel_details.vessel_draft > instance.approval.child_obj.mooring.vessel_draft_limit
                 ):
             raise serializers.ValidationError("Vessel unsuitable for mooring")
 
@@ -1033,8 +1033,9 @@ def get_fee_amount_adjusted(proposal, fee_item_being_applied, vessel_length):
 
                     # Applicant already partially paid for this fee item.  Deduct it.
                     # fee_amount_adjusted -= fee_item_considered_paid.amount
-                    fee_amount_adjusted -= fee_item_considered_paid.get_absolute_amount(vessel_length)
-                    logger_for_payment.info('Deduct fee item: {}'.format(fee_item_considered_paid))
+                    if fee_item_considered_paid:
+                        fee_amount_adjusted -= fee_item_considered_paid.get_absolute_amount(vessel_length)
+                        logger_for_payment.info('Deduct fee item: {}'.format(fee_item_considered_paid))
 
             fee_amount_adjusted = 0 if fee_amount_adjusted <= 0 else fee_amount_adjusted
         else:

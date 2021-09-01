@@ -553,7 +553,6 @@ from '@/utils/hooks'
                     },
                     templateSelection: function(data) {
                         console.log("templateSelection");
-                        console.log(data);
                         return vm.validateRegoNo(data.text);
                     },
                 }).
@@ -852,7 +851,7 @@ from '@/utils/hooks'
                     !this.proposal.vessel_details_id && (this.proposal.proposal_type.code !=='new' || this.proposal.application_type_code === 'mla') &&
                     !this.vessel.rego_no
                 ) {
-                    console.log("Amendment/Renewal");
+                    console.log("Amendment/Renewal/Reissue & MLA");
                     let vm = this;
                     let res = null;
                     // if mla, get vessel from waiting list
@@ -876,6 +875,7 @@ from '@/utils/hooks'
                         const payload = {
                             id: this.vessel.id,
                             tag: false,
+                            selected: true,
                         }
                         $(vm.$refs.vessel_rego_nos).trigger({
                             type: 'select2:select',
