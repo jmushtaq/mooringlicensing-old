@@ -8,6 +8,7 @@ node_modules/
 .ropeproject/
 mooring/cache/*
 mooringlicensing/utils/lotus_notes/*
+mooringlicensing/utils/lotus_notes2/*
 .ropeproject/
 
 # Byte-compiled / optimized / DLL files
