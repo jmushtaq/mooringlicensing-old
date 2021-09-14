@@ -1859,11 +1859,12 @@ class StickerActionDetail(models.Model):
 
 @receiver(pre_delete, sender=Approval)
 def delete_documents(sender, instance, *args, **kwargs):
-    for document in instance.documents.all():
-        try:
-            document.delete()
-        except:
-            pass
+    if hasattr(instance, 'documents'):
+        for document in instance.documents.all():
+            try:
+                document.delete()
+            except:
+                pass
 
 
 #import reversion

@@ -689,6 +689,7 @@ class ListApprovalSerializer(serializers.ModelSerializer):
         model = Approval
         fields = (
             'id',
+            'migrated',
             'lodgement_number',
             'status',
             'internal_status',
@@ -731,6 +732,7 @@ class ListApprovalSerializer(serializers.ModelSerializer):
         # also require the following additional fields for some of the mRender functions
         datatables_always_serialize = (
             'id',
+            'migrated',
             'lodgement_number',
             'status',
             'internal_status',
