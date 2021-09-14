@@ -1,0 +1,333 @@
+diff mooringlicensing/utils/tests/WL/mls_WL000259.txt mooringlicensing/utils/tests/AnnualAdmission/mls_AnnualAdmission000260.txt > mooringlicensing/utils/tests/AnnualAdmission/mls_WL000260_diff.txt
+
+
+7506a7507,7522
+>     "model": "mooringlicensing.communicationslogentry",
+>     "pk": 486,
+>     "fields": {
+>         "to": "jawaid.mushtaq@dbca.wa.gov.au",
+>         "fromm": "no-reply@dbca.wa.gov.au",
+>         "cc": "",
+>         "type": "email",
+>         "reference": "",
+>         "subject": "Your annual admission application AA000260 has been approved",
+>         "text": "",
+>         "customer": 4,
+>         "staff": 57,
+>         "created": "2021-09-06T08:09:27.516Z"
+>     }
+> },
+> {
+22885a22902,22962
+>     "model": "mooringlicensing.proposal",
+>     "pk": 260,
+>     "fields": {
+>         "proposal_type": 1,
+>         "assessor_data": null,
+>         "comment_data": null,
+>         "proposed_issuance_approval": {
+>             "details": "xx",
+>             "cc_email": null
+>         },
+>         "customer_status": "printing_sticker",
+>         "org_applicant": null,
+>         "lodgement_number": "AA000260",
+>         "lodgement_sequence": 0,
+>         "lodgement_date": null,
+>         "proxy_applicant": null,
+>         "submitter": 4,
+>         "assigned_officer": null,
+>         "assigned_approver": null,
+>         "processing_status": "printing_sticker",
+>         "prev_processing_status": null,
+>         "approval": 78,
+>         "previous_application": null,
+>         "proposed_decline_status": false,
+>         "title": null,
+>         "approval_level": null,
+>         "approval_level_document": null,
+>         "approval_comment": "",
+>         "migrated": false,
+>         "vessel_details": 166,
+>         "vessel_ownership": 167,
+>         "rego_no": "ANNUAL_ADM_01",
+>         "vessel_id": null,
+>         "vessel_type": "yacht",
+>         "vessel_name": "NAME_ANNUAL_ADM_01_DOT",
+>         "vessel_overall_length": "13.00",
+>         "vessel_length": "12.00",
+>         "vessel_draft": "2.00",
+>         "vessel_beam": "0.00",
+>         "vessel_weight": "1.00",
+>         "berth_mooring": "BAY_01",
+>         "percentage": null,
+>         "individual_owner": false,
+>         "company_ownership_percentage": 55,
+>         "company_ownership_name": "BHP",
+>         "insurance_choice": "over_ten",
+>         "preferred_bay": null,
+>         "silent_elector": null,
+>         "mooring_authorisation_preference": "",
+>         "bay_preferences_numbered": null,
+>         "site_licensee_email": null,
+>         "mooring": null,
+>         "endorser_reminder_sent": false,
+>         "allocated_mooring": null,
+>         "waiting_list_allocation": null,
+>         "dot_name": "ANNUAL_ADM_01_DOT",
+>         "date_invited": null,
+>         "invitee_reminder_sent": false
+>     }
+> },
+> {
+24439a24517,24521
+>     "model": "mooringlicensing.annualadmissionapplication",
+>     "pk": 260,
+>     "fields": {}
+> },
+> {
+28526a28609,28615
+>     "model": "mooringlicensing.proposallogentry",
+>     "pk": 486,
+>     "fields": {
+>         "proposal": 260
+>     }
+> },
+> {
+31644a31734,31741
+>     "model": "mooringlicensing.vessel",
+>     "pk": 161,
+>     "fields": {
+>         "rego_no": "annual_adm_01",
+>         "blocking_owner": null
+>     }
+> },
+> {
+34020a34118,34135
+>     "model": "mooringlicensing.vesseldetails",
+>     "pk": 166,
+>     "fields": {
+>         "vessel_type": "yacht",
+>         "vessel": 161,
+>         "vessel_name": "NAME_ANNUAL_ADM_01_DOT",
+>         "vessel_overall_length": "13.00",
+>         "vessel_length": "12.00",
+>         "vessel_draft": "2.00",
+>         "vessel_beam": "0.00",
+>         "vessel_weight": "1.00",
+>         "berth_mooring": "BAY_01",
+>         "created": "2021-09-06T06:42:31.123Z",
+>         "updated": "2021-09-06T06:45:20.821Z",
+>         "exported": false
+>     }
+> },
+> {
+34080a34196,34210
+>     "model": "mooringlicensing.companyownership",
+>     "pk": 7,
+>     "fields": {
+>         "blocking_proposal": 260,
+>         "status": "draft",
+>         "vessel": 161,
+>         "company": 7,
+>         "percentage": 55,
+>         "start_date": "2021-09-06T06:42:31.154Z",
+>         "end_date": null,
+>         "created": "2021-09-06T06:42:31.154Z",
+>         "updated": "2021-09-06T06:45:20.858Z"
+>     }
+> },
+> {
+36288a36419,36434
+>     "model": "mooringlicensing.vesselownership",
+>     "pk": 167,
+>     "fields": {
+>         "owner": 49,
+>         "vessel": 161,
+>         "company_ownership": 7,
+>         "percentage": null,
+>         "start_date": "2021-09-06T06:42:31.163Z",
+>         "end_date": null,
+>         "created": "2021-09-06T06:42:31.163Z",
+>         "updated": "2021-09-06T06:45:20.870Z",
+>         "exported": false,
+>         "mooring_licence_end_date": null
+>     }
+> },
+> {
+36582a36729,36735
+>     "model": "mooringlicensing.company",
+>     "pk": 7,
+>     "fields": {
+>         "name": "BHP"
+>     }
+> },
+> {
+37182a37336,37350
+>     "model": "mooringlicensing.vesselregistrationdocument",
+>     "pk": 43,
+>     "fields": {
+>         "name": "hill_1.jpeg",
+>         "description": "",
+>         "uploaded_date": "2021-09-06T06:41:30.762Z",
+>         "proposal": 260,
+>         "_file": "mooringlicensing/proposals/260/vessel_registration_documents/hill_1.jpeg",
+>         "input_name": "vessel-registration-documents",
+>         "can_delete": true,
+>         "can_hide": false,
+>         "hidden": false
+>     }
+> },
+> {
+44771a44940,44979
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 574,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T06:42:52.268Z",
+>         "what": "Lodge application 260",
+>         "proposal": 260
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 575,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T06:45:39.162Z",
+>         "what": "Enter Requirements for proposal 260",
+>         "proposal": 260
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 576,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T06:45:39.334Z",
+>         "what": "Enter Requirements for proposal 260",
+>         "proposal": 260
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 580,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T08:09:26.405Z",
+>         "what": "Printing Sticker for application 260",
+>         "proposal": 260
+>     }
+> },
+> {
+48153a48362,48379
+>     "model": "mooringlicensing.applicationfee",
+>     "pk": 169,
+>     "fields": {
+>         "send_invoice": false,
+>         "confirmation_sent": false,
+>         "created": "2021-09-06T06:42:31.806Z",
+>         "expiry_time": "2021-09-06T06:42:31.806Z",
+>         "proposal": 260,
+>         "payment_type": 3,
+>         "cost": "0.00",
+>         "created_by": 4,
+>         "invoice_reference": "05171001896",
+>         "fee_items": [
+>             280
+>         ]
+>     }
+> },
+> {
+56494a56721,56732
+>     "model": "mooringlicensing.approvaldocument",
+>     "pk": 88,
+>     "fields": {
+>         "name": "approval-AAP000025.pdf",
+>         "description": "",
+>         "uploaded_date": "2021-09-06T08:09:27.467Z",
+>         "approval": 78,
+>         "_file": "mooringlicensing/proposals/260/approvals/approval-AAP000025.pdf",
+>         "can_delete": false
+>     }
+> },
+> {
+57664a57903,57916
+>     "model": "mooringlicensing.approvalhistory",
+>     "pk": 74,
+>     "fields": {
+>         "reason": "new",
+>         "approval": 78,
+>         "vessel_ownership": 167,
+>         "proposal": 260,
+>         "start_date": "2021-09-06T08:09:26.359Z",
+>         "end_date": null,
+>         "approval_letter": null,
+>         "stickers": []
+>     }
+> },
+> {
+60147a60400,60439
+>     "model": "mooringlicensing.approval",
+>     "pk": 78,
+>     "fields": {
+>         "lodgement_number": "AAP000025",
+>         "status": "current",
+>         "internal_status": null,
+>         "licence_document": 88,
+>         "cover_letter_document": null,
+>         "replaced_by": null,
+>         "current_proposal": 260,
+>         "renewal_document": null,
+>         "renewal_sent": false,
+>         "issue_date": "2021-09-06T08:09:26.359Z",
+>         "wla_queue_date": null,
+>         "original_issue_date": "2021-09-06",
+>         "start_date": "2021-09-06",
+>         "expiry_date": "2022-08-31",
+>         "surrender_details": null,
+>         "suspension_details": null,
+>         "submitter": 4,
+>         "org_applicant": null,
+>         "proxy_applicant": null,
+>         "extracted_fields": null,
+>         "cancellation_details": "",
+>         "extend_details": "",
+>         "cancellation_date": null,
+>         "set_to_cancel": false,
+>         "set_to_suspend": false,
+>         "set_to_surrender": false,
+>         "renewal_count": 0,
+>         "migrated": false,
+>         "extended": false,
+>         "expiry_notice_sent": false,
+>         "exported": false,
+>         "wla_order": null,
+>         "vessel_nomination_reminder_sent": false,
+>         "reissued": false
+>     }
+> },
+> {
+60253a60546,60550
+>     "pk": 78,
+>     "fields": {}
+> },
+> {
+>     "model": "mooringlicensing.annualadmissionpermit",
+64370a64668,64683
+>     }
+> },
+> {
+>     "model": "mooringlicensing.sticker",
+>     "pk": 46,
+>     "fields": {
+>         "number": "0000046",
+>         "status": "ready",
+>         "sticker_printing_batch": null,
+>         "sticker_printing_response": null,
+>         "approval": 78,
+>         "printing_date": null,
+>         "mailing_date": null,
+>         "fee_constructor": 21,
+>         "vessel_ownership": 167,
+>         "proposal_initiated": 260

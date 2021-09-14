@@ -1,0 +1,228 @@
+diff mooringlicensing/utils/tests/WL/mls1.txt mooringlicensing/utils/tests/WL/mls_WL000259.txt > mooringlicensing/utils/tests/WL/mls_WL000259_diff.txt
+
+
+vessel=.objects.update_or_create(
+    rego_no="20210901_jm2",
+)
+
+owner=Owner.objects.update_or_create(emailuser=emailuser)
+owner.vessels.add(vessel)
+
+
+vessel_details=VesselDetails.objects.update_or_create(
+    vessel_type="cabin_cruiser",
+    vessel=vessel,
+    vessel_name="sss",
+    vessel_overall_length="12.00",
+    vessel_draft="1.00",
+    vessel_weight="1.00",
+    berth_mooring="abc",
+)
+
+vessel_ownership=VesselOwnership.objects.update_or_create(
+    owner=owner,
+    vessel=vessel,
+    percentage=100,
+)
+
+
+Proposal.objects.create(
+    proposal_type=1, 
+    submitter=4, 
+    migrated=True, 
+    vessel_details=vessel_details, 
+    vessel_ownership=vessel_ownership, 
+    rego_no="20210901_JM2,
+    vessel_type="cabin_cruiser",
+    vessel_name="sss",
+    vessel_overall_length="12.00",
+    vessel_length="12.00",
+    vessel_draft="1.00",
+    vessel_beam="0.00",
+    vessel_weight="1.00",
+    berth_mooring="abc",
+    percentage=100,
+    individual_owner=True,
+    preferred_bay=1,
+)
+
+wla=WaitingListApplication.objects.create(
+    proposal=proposal,
+)
+
+ua=ProposalUserAction.objects.create(
+    proposal=proposal,
+    who=emailuser,
+    what='Waiting List application migrated',
+)
+
+
+
+Summary of mls_WL000259_diff.txt
+
+    "model": "mooringlicensing.proposal", (NON NULL FIELDS)
+    "fields": {
+        "proposal_type": 1,
+        "customer_status": "draft",
+        "org_applicant": null,
+        "lodgement_number": "WL000259",
+        "submitter": 4,
+        "processing_status": "draft",
+        "proposed_decline_status": false,
+        "migrated": false,
+        "vessel_details": 165,
+        "vessel_ownership": 166,
+        "rego_no": "20210901_JM2",
+	"vessel_type": "cabin_cruiser",
+        "vessel_name": "sss",
+        "vessel_overall_length": "12.00",
+        "vessel_length": "12.00",
+        "vessel_draft": "1.00",
+        "vessel_beam": "0.00",
+        "vessel_weight": "1.00",
+        "berth_mooring": "abc",
+        "percentage": 100,
+        "individual_owner": true,
+        "preferred_bay": 1,
+    }
+
+
+
+
+{
+    "model": "mooringlicensing.proposal",
+    "pk": 259,
+    "fields": {
+        "proposal_type": 1,
+        "assessor_data": null,
+        "comment_data": null,
+        "proposed_issuance_approval": null,
+        "customer_status": "draft",
+        "org_applicant": null,
+        "lodgement_number": "WL000259",
+        "lodgement_sequence": 0,
+        "lodgement_date": null,
+        "proxy_applicant": null,
+        "submitter": 4,
+        "assigned_officer": null,
+        "assigned_approver": null,
+        "processing_status": "draft",
+        "prev_processing_status": null,
+        "approval": null,
+        "previous_application": null,
+        "proposed_decline_status": false,
+        "title": null,
+        "approval_level": null,
+        "approval_level_document": null,
+        "approval_comment": "",
+        "migrated": false,
+        "vessel_details": 165,
+        "vessel_ownership": 166,
+        "rego_no": "20210901_JM2",
+        "vessel_id": null,
+        "vessel_type": "cabin_cruiser",
+        "vessel_name": "sss",
+        "vessel_overall_length": "12.00",
+        "vessel_length": "12.00",
+        "vessel_draft": "1.00",
+        "vessel_beam": "0.00",
+        "vessel_weight": "1.00",
+        "berth_mooring": "abc",
+        "percentage": 100,
+        "individual_owner": true,
+        "company_ownership_percentage": null,
+        "company_ownership_name": null,
+        "insurance_choice": "",
+        "preferred_bay": 1,
+        "silent_elector": false,
+        "mooring_authorisation_preference": "",
+        "bay_preferences_numbered": null,
+        "site_licensee_email": null,
+        "mooring": null,
+        "endorser_reminder_sent": false,
+        "allocated_mooring": null,
+        "waiting_list_allocation": null,
+        "dot_name": "aa",
+        "date_invited": null,
+        "invitee_reminder_sent": false
+    }
+}
+
+{
+    "model": "mooringlicensing.waitinglistapplication",
+    "pk": 259,
+    "fields": {}
+}
+
+{
+    "model": "mooringlicensing.vessel",
+    "pk": 159,
+    "fields": {
+        "rego_no": "20210901_jm2",
+        "blocking_owner": null
+    }
+}
+
+
+
+# VesselDetails UPDATED!
+{
+    "model": "mooringlicensing.vesseldetails",
+    "pk": 165,
+    "fields": {
+        "vessel_type": "cabin_cruiser",
+        "vessel": 159,
+        "vessel_name": "sss",
+        "vessel_overall_length": "12.00",
+        "vessel_length": "12.00",
+        "vessel_draft": "1.00",
+        "vessel_beam": "0.00",
+        "vessel_weight": "1.00",
+        "berth_mooring": "abc",
+        "created": "2021-09-01T06:09:41.726Z",
+        "updated": "2021-09-01T06:09:41.727Z",
+        "exported": false
+    }
+}
+
+
+# VesselOwnership UPDATED!
+{
+    "model": "mooringlicensing.vesselownership",
+    "pk": 166,
+    "fields": {
+        "owner": 49,
+        "vessel": 159,
+        "company_ownership": null,
+        "percentage": 100,
+        "start_date": "2021-09-01T06:09:41.747Z",
+        "end_date": null,
+        "created": "2021-09-01T06:09:41.747Z",
+        "updated": "2021-09-01T06:09:41.756Z",
+        "exported": false,
+        "mooring_licence_end_date": null
+    }
+}
+
+{
+    "model": "mooringlicensing.proposaluseraction",
+    "pk": 573,
+    "fields": {
+        "who": 4,
+        "when": "2021-09-01T06:10:16.776Z",
+        "what": "Lodge application 259",
+        "proposal": 259
+    }
+}
+
+class Owner(models.Model):
+    emailuser = models.OneToOneField(EmailUser)
+    # add on approval only
+    vessels = models.ManyToManyField(Vessel, through=VesselOwnership) # these owner/vessel association
+
+class Vessel(models.Model):
+    rego_no = models.CharField(max_length=200, unique=True, blank=False, null=False)
+    # can be individual or company owner
+    ## TODO no longer required???
+    blocking_owner = models.ForeignKey('VesselOwnership', blank=True, null=True, related_name='blocked_vessel')
+
