@@ -19,8 +19,11 @@ from mooringlicensing.components.proposals.models import (
 from mooringlicensing.components.approvals.models import Approval, ApprovalHistory, WaitingListAllocation
 
 class WaitingListMigration(object):
+    '''
+        from mooringlicensing.utils.waiting_list_migrate import WaitingListMigration, GrepSearch
+        WaitingListMigration(test=False)
+    '''
 
-    #def __init__(self, path='/var/www/mooringlicensing/mooringlicensing/utils/wait_list/unique', test=False):
     def __init__(self, path='/var/www/mooringlicensing/mooringlicensing/utils/lotus_notes', test=False):
         self.path = path
         self.test = test
@@ -101,8 +104,8 @@ class WaitingListMigration(object):
         added = []
         errors = []
         with transaction.atomic():
-            for idx, record in enumerate(self.waitlist[390:], 1):
-            #for idx, record in enumerate(self.waitlist, 1):
+            #for idx, record in enumerate(self.waitlist[390:], 1):
+            for idx, record in enumerate(self.waitlist, 1):
                 try: 
                     #import ipdb; ipdb.set_trace()
                     pers_no = record.get('PersNo')
