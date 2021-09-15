@@ -65,14 +65,22 @@
                                     {{ vessel.vessel_details.vessel_length }}
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <!--div class="row form-group">
+=======
+                            <div class="row form-group">
+>>>>>>> migration
                                 <div class="col-sm-3">
                                     <label>Overall length of vessel:</label>
                                 </div>
                                 <div class="col-sm-6">
                                     {{ vessel.vessel_details.vessel_overall_length }}
                                 </div>
+<<<<<<< HEAD
                             </div-->
+=======
+                            </div>
+>>>>>>> migration
                             <div class="row form-group">
                                 <div class="col-sm-3">
                                     <label>Displacement tonnage:</label>

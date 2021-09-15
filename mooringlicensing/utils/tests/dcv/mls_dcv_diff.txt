@@ -1,0 +1,189 @@
+DcvAdmissionFee.objects.create(
+    created": "2021-09-14T13:06:56.773Z",
+    expiry_time": "2021-09-14T13:06:56.773Z",
+    dcv_admission": dcv_admission,
+    payment_type=2,  # 'BLACK'
+    #cost="0.00",
+    created_by=user,
+    invoice_reference=None",
+)
+
+DcvVessel.objects.create(
+    rego_no="JM_VR01",
+    vessel_name="JM_VN01",
+    dcv_organisation=null, # dcv_organisation
+)
+ 
+DcvOrganisation.objects.create(
+    name="org_name",
+    abn="123",
+)
+ 
+DcvAdmission.objects.create(
+    submitter=4,
+    #lodgement_number="DCV000018",
+    lodgement_datetime="2021-09-14T13:06:56.775Z",
+    skipper="aaa",
+    contact_number="123",
+    dcv_vessel=null, # dcv_vessel
+)
+
+DcvAdmissionArrival.objects.create(
+    dcv_admission=dcv_admission,
+    arrival_date="2021-09-14",
+    departure_date="2021-10-07",
+    private_visit=false,
+    fee_season=null,
+    start_date=null,
+    end_date=null,
+    fee_constructor=null,
+)
+
+DcvAdmissionArrival.objects.create(
+    number=1,
+    dcv_admission_arrival=dcv_admission_arrival,
+    age_group=1, (1:Adult, 2:Child)
+    admission_type=1
+)
+
+[(1, <AdmissionType: Landing>),
+ (2, <AdmissionType: Extended stay>),
+ (3, <AdmissionType: Not landing>),
+ (4, <AdmissionType: Approved events>)]
+
+63332a63333,63348
+>     "model": "mooringlicensing.dcvadmissionfee",
+>     "pk": 12,
+>     "fields": {
+>         "send_invoice": false,
+>         "confirmation_sent": false,
+>         "created": "2021-09-14T13:06:56.773Z",
+>         "expiry_time": "2021-09-14T13:06:56.773Z",
+>         "dcv_admission": 18,
+>         "payment_type": 3,
+>         "cost": "0.00",
+>         "created_by": 4,
+>         "invoice_reference": "05171001965",
+>         "fee_items": []
+>     }
+> },
+> {
+88272a88289,88297
+>     "model": "mooringlicensing.dcvvessel",
+>     "pk": 18,
+>     "fields": {
+>         "rego_no": "JM_VR01",
+>         "vessel_name": "JM_VN01",
+>         "dcv_organisation": null
+>     }
+> },
+> {
+88476a88502,88513
+>     "model": "mooringlicensing.dcvadmission",
+>     "pk": 18,
+>     "fields": {
+>         "submitter": 4,
+>         "lodgement_number": "DCV000018",
+>         "lodgement_datetime": "2021-09-14T13:06:56.775Z",
+>         "skipper": "aaa",
+>         "contact_number": "123",
+>         "dcv_vessel": null
+>     }
+> },
+> {
+88672a88710,88723
+>     "model": "mooringlicensing.dcvadmissionarrival",
+>     "pk": 15,
+>     "fields": {
+>         "dcv_admission": 18,
+>         "arrival_date": "2021-09-14",
+>         "departure_date": "2021-10-07",
+>         "private_visit": false,
+>         "fee_season": null,
+>         "start_date": null,
+>         "end_date": null,
+>         "fee_constructor": null
+>     }
+> },
+> {
+89829a89881,89960
+>         "age_group": 2,
+>         "admission_type": 4
+>     }
+> },
+> {
+>     "model": "mooringlicensing.numberofpeople",
+>     "pk": 113,
+>     "fields": {
+>         "number": 1,
+>         "dcv_admission_arrival": 15,
+>         "age_group": 1,
+>         "admission_type": 1
+>     }
+> },
+> {
+>     "model": "mooringlicensing.numberofpeople",
+>     "pk": 114,
+>     "fields": {
+>         "number": 1,
+>         "dcv_admission_arrival": 15,
+>         "age_group": 1,
+>         "admission_type": 2
+>     }
+> },
+> {
+>     "model": "mooringlicensing.numberofpeople",
+>     "pk": 115,
+>     "fields": {
+>         "number": 0,
+>         "dcv_admission_arrival": 15,
+>         "age_group": 1,
+>         "admission_type": 3
+>     }
+> },
+> {
+>     "model": "mooringlicensing.numberofpeople",
+>     "pk": 116,
+>     "fields": {
+>         "number": 0,
+>         "dcv_admission_arrival": 15,
+>         "age_group": 1,
+>         "admission_type": 4
+>     }
+> },
+> {
+>     "model": "mooringlicensing.numberofpeople",
+>     "pk": 117,
+>     "fields": {
+>         "number": 2,
+>         "dcv_admission_arrival": 15,
+>         "age_group": 2,
+>         "admission_type": 1
+>     }
+> },
+> {
+>     "model": "mooringlicensing.numberofpeople",
+>     "pk": 118,
+>     "fields": {
+>         "number": 1,
+>         "dcv_admission_arrival": 15,
+>         "age_group": 2,
+>         "admission_type": 2
+>     }
+> },
+> {
+>     "model": "mooringlicensing.numberofpeople",
+>     "pk": 119,
+>     "fields": {
+>         "number": 0,
+>         "dcv_admission_arrival": 15,
+>         "age_group": 2,
+>         "admission_type": 3
+>     }
+> },
+> {
+>     "model": "mooringlicensing.numberofpeople",
+>     "pk": 120,
+>     "fields": {
+>         "number": 0,
+>         "dcv_admission_arrival": 15,

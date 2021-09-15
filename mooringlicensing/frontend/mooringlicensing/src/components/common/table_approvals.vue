@@ -253,7 +253,10 @@ export default {
                     'Number',
                     'Type',
                     'Sticker number/s',
+<<<<<<< HEAD
                     'Sticker mailed date',
+=======
+>>>>>>> migration
                     'Status',
                     'Issue Date',
                     'Expiry Date',
@@ -286,7 +289,10 @@ export default {
                     'Number',
                     'Type',
                     'Sticker Number/s',
+<<<<<<< HEAD
                     'Sticker mailed date',
+=======
+>>>>>>> migration
                     'Holder',
                     'Status',
                     'Issue Date',
@@ -307,8 +313,11 @@ export default {
                         searchable: false,
                         visible: false,
                         'render': function(row, type, full){
+<<<<<<< HEAD
                             console.log('---full---')
                             console.log(full)
+=======
+>>>>>>> migration
                             return full.id
                         }
                     }
@@ -321,7 +330,15 @@ export default {
                         searchable: true,
                         visible: true,
                         'render': function(row, type, full){
+<<<<<<< HEAD
                             return full.lodgement_number
+=======
+			    if (full.migrated){
+				return full.lodgement_number + ' (M)'
+			    } else {
+				return full.lodgement_number
+			    }
+>>>>>>> migration
                         }
                     }
         },
@@ -438,11 +455,15 @@ export default {
                                 //if(full.renewal_document && full.renewal_sent && full.can_renew) {
                                     links +=  `<a href='#${full.id}' data-renew-approval='${full.current_proposal_id}'>Renew</a><br/>`;
                                 }
+<<<<<<< HEAD
 
                                 if (full.approval_type_dict.code != 'wla') {
                                     links +=  `<a href='#${full.id}' data-request-new-sticker='${full.id}'>Request New Sticker</a><br/>`;
                                 }
 
+=======
+                                links +=  `<a href='#${full.id}' data-request-new-sticker='${full.id}'>Request New Sticker</a><br/>`;
+>>>>>>> migration
                             } else if (!vm.is_external){
                                 links +=  `<a href='/internal/approval/${full.id}'>View</a><br/>`;
                                 links +=  `<a href='#${full.id}' data-history-approval='${full.id}'>History</a><br/>`;
@@ -567,6 +588,7 @@ export default {
                         searchable: true,
                         visible: true,
                         'render': function(row, type, full){
+<<<<<<< HEAD
                             let ret_str = ''
                             for (let sticker of full.stickers){
                                 ret_str += sticker.number + '<br />'
@@ -592,6 +614,10 @@ export default {
                                 }
                             }
                             return ret_str
+=======
+                            //return full.vessel_draft;
+                            return full.stickers;
+>>>>>>> migration
                         }
                     }
         },
@@ -668,7 +694,10 @@ export default {
                     vm.columnLodgementNumber,
                     vm.columnApprovalType,
                     vm.columnStickerNumber,
+<<<<<<< HEAD
                     vm.columnStickerMailedDate,
+=======
+>>>>>>> migration
                     vm.columnStatus,
                     vm.columnIssueDate,
                     vm.columnExpiryDate,
@@ -702,7 +731,10 @@ export default {
                     vm.columnLodgementNumber,
                     vm.columnApprovalType,
                     vm.columnStickerNumber,
+<<<<<<< HEAD
                     vm.columnStickerMailedDate,
+=======
+>>>>>>> migration
                     vm.columnHolder,
                     vm.columnStatus,
                     vm.columnIssueDate,
@@ -776,7 +808,11 @@ export default {
     methods: {
         sendData: function(params){
             let vm = this
+<<<<<<< HEAD
             vm.$http.post(helpers.add_endpoint_json(api_endpoints.approvals, params.approval_id + '/request_new_stickers'), params).then(
+=======
+            vm.$http.post(helpers.add_endpoint_json(api_endpoints.approvals, params.approval_id + '/request_new_stickers'), params.details).then(
+>>>>>>> migration
                 res => {
                     helpers.post_and_redirect('/sticker_replacement_fee/', {'csrfmiddlewaretoken' : vm.csrf_token, 'data': JSON.stringify(res.body)});
                 },
@@ -785,6 +821,25 @@ export default {
                 }
             )
         },
+<<<<<<< HEAD
+=======
+        //post_and_redirect: function(url, postData) {
+        //    /* http.post and ajax do not allow redirect from Django View (post method),
+        //       this function allows redirect by mimicking a form submit.
+        //       usage:  vm.post_and_redirect(vm.application_fee_url, {'csrfmiddlewaretoken' : vm.csrf_token});
+        //    */
+        //    var postFormStr = "<form method='POST' name='Preview Licence' action='" + url + "'>";
+        //    for (var key in postData) {
+        //        if (postData.hasOwnProperty(key)) {
+        //            postFormStr += "<input type='hidden' name='" + key + "' value='" + postData[key] + "'>";
+        //        }
+        //    }
+        //    postFormStr += "</form>";
+        //    var formElement = $(postFormStr);
+        //    $('body').append(formElement);
+        //    $(formElement).submit();
+        //},
+>>>>>>> migration
         fetchProfile: function(){
             let vm = this;
             Vue.http.get(api_endpoints.profile).then((response) => {
@@ -1052,6 +1107,10 @@ export default {
             });
         },
         cancelApproval: function(approval_id){
+<<<<<<< HEAD
+=======
+
+>>>>>>> migration
             this.$refs.approval_cancellation.approval_id = approval_id;
             this.$refs.approval_cancellation.isModalOpen = true;
         },
@@ -1076,6 +1135,12 @@ export default {
             this.$nextTick(() => {
                 this.$refs.approval_history.isModalOpen = true;
             });
+<<<<<<< HEAD
+=======
+
+            //this.$refs.approval_history.approvalId = approvalId;
+            //this.$refs.approval_history.isModalOpen = true;
+>>>>>>> migration
         },
 
         renewApproval:function (proposal_id) {

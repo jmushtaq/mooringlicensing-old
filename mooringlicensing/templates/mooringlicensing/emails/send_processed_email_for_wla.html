@@ -3,18 +3,24 @@
 {%  block content_body %}
 Dear {{ recipient.first_name }} {{ recipient.last_name}},
 
+<<<<<<< HEAD
 {% if decision == 'paid' %}
 Your waiting list allocation application {{ proposal.lodgement_number }} has been approved. Please see attached document for more details.
 
 Details: {{ details }}
 {% endif %}
 
+=======
+>>>>>>> migration
 {% if decision == 'approved' %}
     Your waiting list allocation application {{ proposal.lodgement_number }} has been approved. Please see attached document for more details.
 
     Details: {{ details }}
 {% endif %}
+<<<<<<< HEAD
 
+=======
+>>>>>>> migration
 {% if decision == 'declined' %}
     Your waiting list allocation application {{ proposal.lodgement_number }} has been declined.
 

@@ -1,0 +1,359 @@
+./manage_ml.py dumpdata --indent 4 mooringlicensing > mooringlicensing/utils/tests/AUP/mls_WL000261.txt
+diff mooringlicensing/utils/tests/AnnualAdmission/mls_AnnualAdmission000260.txt mooringlicensing/utils/tests/AUP/mls_WL000261.txt > mooringlicensing/utils/tests/AUP/mls_WL000261_diff.txt
+
+
+7522a7523,7602
+>     "model": "mooringlicensing.communicationslogentry",
+>     "pk": 487,
+>     "fields": {
+>         "to": "jawaid.mushtaq@dbca.wa.gov.au",
+>         "fromm": "no-reply@dbca.wa.gov.au",
+>         "cc": "",
+>         "type": "email",
+>         "reference": "",
+>         "subject": "Successful submission of application",
+>         "text": "\n    Dear Jawaid Mushtaq,\n    Your Authorised User Application AU000261 has been successfully submitted.\n\n    \n\n    If you have any queries please contact us on (08) 9432 9111 or email to moorings@rottnestisland.com\nKind Regards\nRottnest Island Authority\nwww.rottnestisland.com\n\n\n",
+>         "customer": 4,
+>         "staff": 57,
+>         "created": "2021-09-06T08:34:10.098Z"
+>     }
+> },
+> {
+>     "model": "mooringlicensing.communicationslogentry",
+>     "pk": 488,
+>     "fields": {
+>         "to": "katsufumi.shibata@dbca.wa.gov.au,brendan.blackford@dbca.wa.gov.au,walter.genuit@dbca.wa.gov.au,jawaid.mushtaq@dbca.wa.gov.au",
+>         "fromm": "no-reply@dbca.wa.gov.au",
+>         "cc": "",
+>         "type": "email",
+>         "reference": "",
+>         "subject": "A new application has been submitted",
+>         "text": "\n    The Authorised User Application AU000261 has been submitted and is ready for assessment.\n    Please access http://localhost:8071/internal/proposal/261/ to assess the application.\n\n",
+>         "customer": 4,
+>         "staff": 57,
+>         "created": "2021-09-06T08:34:10.118Z"
+>     }
+> },
+> {
+>     "model": "mooringlicensing.communicationslogentry",
+>     "pk": 489,
+>     "fields": {
+>         "to": "katsufumi.shibata@dbca.wa.gov.au,brendan.blackford@dbca.wa.gov.au,walter.genuit@dbca.wa.gov.au,jawaid.mushtaq@dbca.wa.gov.au",
+>         "fromm": "no-reply@dbca.wa.gov.au",
+>         "cc": "",
+>         "type": "email",
+>         "reference": "",
+>         "subject": "An application is ready for approval or decline",
+>         "text": "\nThe Authorised User Application AU000261 has been assessed and is ready for approval or decline.\n\n\nDetails:\nStart date: None\nExpiry date: None\nDetails: ff\n\n\n\nPlease click <a href=\"http://localhost:8071/internal/proposal/261/\">here</a> to access the application.\n\n",
+>         "customer": 4,
+>         "staff": 57,
+>         "created": "2021-09-06T08:36:42.010Z"
+>     }
+> },
+> {
+>     "model": "mooringlicensing.communicationslogentry",
+>     "pk": 490,
+>     "fields": {
+>         "to": "jawaid.mushtaq@dbca.wa.gov.au",
+>         "fromm": "no-reply@dbca.wa.gov.au",
+>         "cc": "",
+>         "type": "email",
+>         "reference": "",
+>         "subject": "Your authorised user application AU000261 has been approved",
+>         "text": "",
+>         "customer": 4,
+>         "staff": 57,
+>         "created": "2021-09-06T08:37:26.670Z"
+>     }
+> },
+> {
+>     "model": "mooringlicensing.communicationslogentry",
+>     "pk": 491,
+>     "fields": {
+>         "to": "katsufumi.shibata@dbca.wa.gov.au,brendan.blackford@dbca.wa.gov.au,walter.genuit@dbca.wa.gov.au,jawaid.mushtaq@dbca.wa.gov.au",
+>         "fromm": "no-reply@dbca.wa.gov.au",
+>         "cc": "",
+>         "type": "email",
+>         "reference": "",
+>         "subject": "An application is ready for approval or decline",
+>         "text": "\nThe Authorised User Application AU000261 has been assessed and is ready for approval or decline.\n\n\nDetails:\nStart date: None\nExpiry date: None\nDetails: ff\n\n\n\nPlease click <a href=\"http://localhost:8071/internal/proposal/261/\">here</a> to access the application.\n\n",
+>         "customer": 4,
+>         "staff": 57,
+>         "created": "2021-09-06T08:38:37.451Z"
+>     }
+> },
+> {
+22962a23043,23109
+>     "model": "mooringlicensing.proposal",
+>     "pk": 261,
+>     "fields": {
+>         "proposal_type": 1,
+>         "assessor_data": null,
+>         "comment_data": null,
+>         "proposed_issuance_approval": {
+>             "details": "ff",
+>             "cc_email": null,
+>             "mooring_id": 109,
+>             "current_date": "06/09/2021",
+>             "mooring_bay_id": 3,
+>             "ria_mooring_name": "Thomson Bay North Private 2",
+>             "vessel_ownership": [],
+>             "mooring_on_approval": []
+>         },
+>         "customer_status": "awaiting_payment",
+>         "org_applicant": null,
+>         "lodgement_number": "AU000261",
+>         "lodgement_sequence": 0,
+>         "lodgement_date": "2021-09-06T08:34:10.047Z",
+>         "proxy_applicant": null,
+>         "submitter": 4,
+>         "assigned_officer": null,
+>         "assigned_approver": null,
+>         "processing_status": "with_approver",
+>         "prev_processing_status": null,
+>         "approval": null,
+>         "previous_application": null,
+>         "proposed_decline_status": false,
+>         "title": null,
+>         "approval_level": null,
+>         "approval_level_document": null,
+>         "approval_comment": "",
+>         "migrated": false,
+>         "vessel_details": 167,
+>         "vessel_ownership": 168,
+>         "rego_no": "AUP_01",
+>         "vessel_id": null,
+>         "vessel_type": "cabin_cruiser",
+>         "vessel_name": "NAME_AUP_01",
+>         "vessel_overall_length": "13.00",
+>         "vessel_length": "14.00",
+>         "vessel_draft": "3.00",
+>         "vessel_beam": "0.00",
+>         "vessel_weight": "2.00",
+>         "berth_mooring": "BAY_02",
+>         "percentage": 60,
+>         "individual_owner": true,
+>         "company_ownership_percentage": null,
+>         "company_ownership_name": null,
+>         "insurance_choice": "over_ten",
+>         "preferred_bay": null,
+>         "silent_elector": null,
+>         "mooring_authorisation_preference": "ria",
+>         "bay_preferences_numbered": "[\"2\", \"1\", \"3\", \"4\", \"5\", \"6\"]",
+>         "site_licensee_email": null,
+>         "mooring": null,
+>         "endorser_reminder_sent": false,
+>         "allocated_mooring": null,
+>         "waiting_list_allocation": null,
+>         "dot_name": "NAME_AUP_01_DOT",
+>         "date_invited": null,
+>         "invitee_reminder_sent": false
+>     }
+> },
+> {
+24941a25089,25095
+>     "model": "mooringlicensing.authoriseduserapplication",
+>     "pk": 261,
+>     "fields": {
+>         "uuid": "5f0e8329-945c-4697-bc5a-dc8418da6679"
+>     }
+> },
+> {
+28615a28770,28804
+>     "model": "mooringlicensing.proposallogentry",
+>     "pk": 487,
+>     "fields": {
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposallogentry",
+>     "pk": 488,
+>     "fields": {
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposallogentry",
+>     "pk": 489,
+>     "fields": {
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposallogentry",
+>     "pk": 490,
+>     "fields": {
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposallogentry",
+>     "pk": 491,
+>     "fields": {
+>         "proposal": 261
+>     }
+> },
+> {
+31741a31931,31938
+>     "model": "mooringlicensing.vessel",
+>     "pk": 162,
+>     "fields": {
+>         "rego_no": "aup_01",
+>         "blocking_owner": null
+>     }
+> },
+> {
+34135a34333,34350
+>     "model": "mooringlicensing.vesseldetails",
+>     "pk": 167,
+>     "fields": {
+>         "vessel_type": "cabin_cruiser",
+>         "vessel": 162,
+>         "vessel_name": "NAME_AUP_01",
+>         "vessel_overall_length": "13.00",
+>         "vessel_length": "14.00",
+>         "vessel_draft": "3.00",
+>         "vessel_beam": "0.00",
+>         "vessel_weight": "2.00",
+>         "berth_mooring": "BAY_02",
+>         "created": "2021-09-06T08:34:09.409Z",
+>         "updated": "2021-09-06T08:34:09.409Z",
+>         "exported": false
+>     }
+> },
+> {
+36434a36650,36665
+>     "model": "mooringlicensing.vesselownership",
+>     "pk": 168,
+>     "fields": {
+>         "owner": 49,
+>         "vessel": 162,
+>         "company_ownership": null,
+>         "percentage": 60,
+>         "start_date": "2021-09-06T08:34:09.431Z",
+>         "end_date": null,
+>         "created": "2021-09-06T08:34:09.431Z",
+>         "updated": "2021-09-06T08:34:09.442Z",
+>         "exported": false,
+>         "mooring_licence_end_date": null
+>     }
+> },
+> {
+38490a38722,38736
+>     "model": "mooringlicensing.insurancecertificatedocument",
+>     "pk": 78,
+>     "fields": {
+>         "name": "hill_1.jpeg",
+>         "description": "",
+>         "uploaded_date": "2021-09-06T08:33:36.834Z",
+>         "proposal": 261,
+>         "_file": "mooringlicensing/proposals/261/insurance_certificate_documents/hill_1.jpeg",
+>         "input_name": "insurance-certificate-documents",
+>         "can_delete": true,
+>         "can_hide": false,
+>         "hidden": false
+>     }
+> },
+> {
+44979a45226,45305
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 581,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T08:34:10.067Z",
+>         "what": "Lodge application 261",
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 582,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T08:34:34.014Z",
+>         "what": "Enter Requirements for proposal 261",
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 583,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T08:34:34.120Z",
+>         "what": "Enter Requirements for proposal 261",
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 584,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T08:36:41.982Z",
+>         "what": "Application 261 has been proposed for approval",
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 585,
+>     "fields": {
+>         "who": null,
+>         "when": "2021-09-06T08:37:26.710Z",
+>         "what": "Approve application 261",
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 586,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T08:38:32.711Z",
+>         "what": "Enter Requirements for proposal 261",
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 587,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T08:38:32.876Z",
+>         "what": "Enter Requirements for proposal 261",
+>         "proposal": 261
+>     }
+> },
+> {
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 588,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-06T08:38:37.436Z",
+>         "what": "Application 261 has been proposed for approval",
+>         "proposal": 261
+>     }
+> },
+> {
+48374a48701,48719
+>             280
+>         ]
+>     }
+> },
+> {
+>     "model": "mooringlicensing.applicationfee",
+>     "pk": 171,
+>     "fields": {
+>         "send_invoice": false,
+>         "confirmation_sent": false,
+>         "created": "2021-09-06T08:37:26.538Z",
+>         "expiry_time": "2021-09-06T08:37:26.538Z",
+>         "proposal": 261,
+>         "payment_type": 3,
+>         "cost": "0.00",
+>         "created_by": null,
+>         "invoice_reference": "05171001915",
+>         "fee_items": [
+>             298,

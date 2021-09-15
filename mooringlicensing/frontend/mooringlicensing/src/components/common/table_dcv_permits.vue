@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
+<<<<<<< HEAD
                     <label for="">Organisation</label>
                     <select class="form-control" v-model="filterDcvOrganisation">
                         <option value="All">All</option>
@@ -16,6 +17,12 @@
                     <select class="form-control" v-model="filterFeeSeason">
                         <option value="All">All</option>
                         <option v-for="fee_season in fee_seasons" :value="fee_season.id">{{ fee_season.name }}</option>
+=======
+                    <label for="">Type</label>
+                    <select class="form-control" v-model="filterApplicationType">
+                        <option value="All">All</option>
+                        <option v-for="type in application_types" :value="type.code">{{ type.description }}</option>
+>>>>>>> migration
                     </select>
                 </div>
             </div>
@@ -37,10 +44,13 @@
                 />
             </div>
         </div>
+<<<<<<< HEAD
         <CreateNewStickerModal
             ref="create_new_sticker_modal"
             @sendData="sendData"
         />
+=======
+>>>>>>> migration
     </div>
 </template>
 
@@ -48,7 +58,10 @@
 import datatable from '@/utils/vue/datatable.vue'
 import Vue from 'vue'
 import { api_endpoints, helpers } from '@/utils/hooks'
+<<<<<<< HEAD
 import CreateNewStickerModal from "@/components/common/create_new_sticker_modal.vue"
+=======
+>>>>>>> migration
 
 export default {
     name: 'TableDcvPermits',
@@ -68,6 +81,7 @@ export default {
             datatable_id: 'applications-datatable-' + vm._uid,
 
             // selected values for filtering
+<<<<<<< HEAD
             filterDcvOrganisation: null,
             filterFeeSeason: null,
 
@@ -89,6 +103,39 @@ export default {
             let vm = this;
             vm.$refs.application_datatable.vmDataTable.draw();
         },
+=======
+            filterApplicationType: null,
+            filterApplicationStatus: null,
+            filterApplicant: null,
+
+            // filtering options
+            application_types: [],
+            application_statuses: [],
+            applicants: [],
+        }
+    },
+    components:{
+        datatable
+    },
+    watch: {
+        filterApplicationStatus: function() {
+            let vm = this;
+            vm.$refs.application_datatable.vmDataTable.draw();  // This calls ajax() backend call.  This line is enough to search?  Do we need following lines...?
+            //if (vm.filterApplicationStatus != 'All') {
+            //    vm.$refs.application_datatable.vmDataTable.column('status:name').search('').draw();
+            //} else {
+            //    vm.$refs.application_datatable.vmDataTable.column('status:name').search(vm.filterApplicationStatus).draw();
+            //}
+        },
+        filterApplicationType: function() {
+            let vm = this;
+            vm.$refs.application_datatable.vmDataTable.draw();  // This calls ajax() backend call.  This line is enough to search?  Do we need following lines...?
+        },
+        filterApplicant: function(){
+            let vm = this;
+            vm.$refs.application_datatable.vmDataTable.draw();  // This calls ajax() backend call.  This line is enough to search?  Do we need following lines...?
+        }
+>>>>>>> migration
     },
     computed: {
         is_external: function() {
@@ -98,9 +145,21 @@ export default {
             return this.level == 'internal'
         },
         datatable_headers: function(){
+<<<<<<< HEAD
             if (this.is_internal){
                 return ['id', 'Number', 'Invoice / Permit', 'Organisation', 'Status', 'Season', 'Sticker', 'Action']
             }
+=======
+            /*
+            if (this.is_external){
+                return ['id', 'Lodgement Number', 'Type', 'Application Type', 'Status', 'Lodged on', 'Invoice', 'Action']
+            }
+            if (this.is_internal){
+                return ['id', 'Lodgement Number', 'Type', 'Applicant', 'Status', 'Lodged on', 'Assigned To', 'Payment Status', 'Action']
+            }
+            */
+            return ['id', 'Number', 'Invoice / Permit', 'Organisation', 'Status', 'Season', 'Action']
+>>>>>>> migration
         },
         column_id: function(){
             return {
@@ -122,7 +181,15 @@ export default {
                 searchable: true,
                 visible: true,
                 'render': function(row, type, full){
+<<<<<<< HEAD
                     return full.lodgement_number
+=======
+                    if (full.migrated){
+                        return full.lodgement_number + ' (M)'
+                    } else {
+                        return full.lodgement_number
+                    }
+>>>>>>> migration
                 },
                 name: 'lodgement_number',
             }
@@ -183,13 +250,23 @@ export default {
                 }
             }
         },
+<<<<<<< HEAD
         column_sticker: function(){
             return {
+=======
+
+        /*
+        column_invoice: function(){
+            let vm = this
+            return {
+                // 7. Invoice
+>>>>>>> migration
                 data: "id",
                 orderable: true,
                 searchable: true,
                 visible: true,
                 'render': function(row, type, full){
+<<<<<<< HEAD
                     let ret_str = ''
                     for(let sticker of full.stickers){
                         ret_str += sticker.number + '<br />'
@@ -198,6 +275,24 @@ export default {
                 }
             }
         },
+=======
+                    let links = '';
+                    if (full.invoices){
+                        for (let invoice of full.invoices){
+                            links += '<div>'
+                            links +=  `<a href='/payments/invoice-pdf/${invoice.reference}.pdf' target='_blank'><i style='color:red;' class='fa fa-file-pdf-o'></i> #${invoice.reference}</a>`;
+                            if (!vm.is_external){
+                                links +=  `&nbsp;&nbsp;&nbsp;<a href='/ledger/payments/invoice/payment?invoice=${invoice.reference}' target='_blank'>View Payment</a><br/>`;
+                            }
+                            links += '</div>'
+                        }
+                    }
+                    return links
+                }
+            }
+        },
+        */
+>>>>>>> migration
         column_action: function(){
             let vm = this
             return {
@@ -208,6 +303,7 @@ export default {
                 visible: true,
                 'render': function(row, type, full){
                     let links = '';
+<<<<<<< HEAD
                     if (vm.is_internal){
                         if (full.invoices){
                             for (let invoice of full.invoices){
@@ -220,6 +316,15 @@ export default {
                         }
                         if (full.display_create_sticker_action){
                             links +=  `<a href='#${full.id}' data-create-new-sticker='${full.id}'>Create New Sticker</a><br/>`;
+=======
+                    if (full.invoices){
+                        for (let invoice of full.invoices){
+                            links += '<div>'
+                            if (!vm.is_external){
+                                links +=  `&nbsp;&nbsp;&nbsp;<a href='/ledger/payments/invoice/payment?invoice=${invoice.reference}' target='_blank'>View Payment</a><br/>`;
+                            }
+                            links += '</div>'
+>>>>>>> migration
                         }
                     }
                     return links
@@ -236,7 +341,10 @@ export default {
                 vm.column_organisation,
                 vm.column_status,
                 vm.column_year,
+<<<<<<< HEAD
                 vm.column_sticker,
+=======
+>>>>>>> migration
                 vm.column_action,
             ]
             let search = true
@@ -255,8 +363,16 @@ export default {
 
                     // adding extra GET params for Custom filtering
                     "data": function ( d ) {
+<<<<<<< HEAD
                         d.filter_dcv_organisation_id = vm.filterDcvOrganisation
                         d.filter_fee_season_id = vm.filterFeeSeason
+=======
+                        /*
+                        d.filter_application_type = vm.filterApplicationType
+                        d.filter_application_status = vm.filterApplicationStatus
+                        d.filter_applicant = vm.filterApplicant
+                        */
+>>>>>>> migration
                     }
                 },
                 dom: 'lBfrtip',
@@ -285,6 +401,7 @@ export default {
         }
     },
     methods: {
+<<<<<<< HEAD
         sendData: function(params){
             let vm = this
             vm.$http.post('/api/dcv_permit/' + params.dcv_permit_id + '/create_new_sticker/', params).then(
@@ -305,11 +422,14 @@ export default {
             this.$refs.create_new_sticker_modal.dcv_permit_id = dcv_permit_id
             this.$refs.create_new_sticker_modal.isModalOpen = true
         },
+=======
+>>>>>>> migration
         new_application_button_clicked: function(){
             this.$router.push({
                 name: 'apply_proposal'
             })
         },
+<<<<<<< HEAD
         fetchFilterLists: function(){
             let vm = this;
 
@@ -335,10 +455,75 @@ export default {
                 e.preventDefault();
                 var id = $(this).attr('data-create-new-sticker');
                 vm.createNewSticker(id);
+=======
+        discardProposal: function(proposal_id) {
+            let vm = this;
+            swal({
+                title: "Discard Application",
+                text: "Are you sure you want to discard this proposal?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: 'Discard Application',
+                confirmButtonColor:'#dc3545'
+            }).then(() => {
+                vm.$http.delete(api_endpoints.discard_proposal(proposal_id))
+                .then((response) => {
+                    swal(
+                        'Discarded',
+                        'Your proposal has been discarded',
+                        'success'
+                    )
+                    //vm.$refs.application_datatable.vmDataTable.ajax.reload();
+                    vm.$refs.application_datatable.vmDataTable.draw();
+                }, (error) => {
+                    console.log(error);
+                });
+            },(error) => {
+
+            });
+        },
+        fetchFilterLists: function(){
+            let vm = this;
+
+            // Application Types
+            vm.$http.get(api_endpoints.application_types_dict+'?apply_page=False').then((response) => {
+                vm.application_types = response.body
+            },(error) => {
+                console.log(error);
+            })
+
+            // Application Statuses
+            vm.$http.get(api_endpoints.application_statuses_dict).then((response) => {
+                vm.application_statuses = response.body
+            },(error) => {
+                console.log(error);
+            })
+
+            // Applicant
+            if (vm.is_internal){
+                vm.$http.get(api_endpoints.applicants_dict).then((response) => {
+                    console.log(response.body)
+                    vm.applicants = response.body
+                },(error) => {
+                    console.log(error);
+                })
+            }
+        },
+        addEventListeners: function(){
+            let vm = this
+            vm.$refs.application_datatable.vmDataTable.on('click', 'a[data-discard-proposal]', function(e) {
+                e.preventDefault();
+                let id = $(this).attr('data-discard-proposal');
+                vm.discardProposal(id)
+>>>>>>> migration
             });
         },
     },
     created: function(){
+<<<<<<< HEAD
+=======
+        console.log('table_applications created')
+>>>>>>> migration
         this.fetchFilterLists()
     },
     mounted: function(){

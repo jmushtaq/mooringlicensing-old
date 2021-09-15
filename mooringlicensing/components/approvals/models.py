@@ -897,6 +897,7 @@ class AnnualAdmissionPermit(Approval):
     class Meta:
         app_label = 'mooringlicensing'
 
+
     #@property
     #def next_id(self):
     #    ids = map(int, [re.sub('^[A-Za-z]*', '', i) for i in AnnualAdmissionPermit.objects.all().values_list('lodgement_number', flat=True) if i])
@@ -1600,6 +1601,9 @@ class DcvPermit(RevisionedMixin):
     class Meta:
         app_label = 'mooringlicensing'
 
+    def __str__(self):
+        return f'{self.lodgement_number} (M)' if self.migrated else f'{self.lodgement_number}' 
+
 
 def update_dcv_admission_doc_filename(instance, filename):
     return '{}/dcv_admissions/{}/admissions/{}'.format(settings.MEDIA_APP_DIR, instance.id, filename)
@@ -1836,11 +1840,12 @@ class StickerActionDetail(models.Model):
 
 @receiver(pre_delete, sender=Approval)
 def delete_documents(sender, instance, *args, **kwargs):
-    for document in instance.documents.all():
-        try:
-            document.delete()
-        except:
-            pass
+    if hasattr(instance, 'documents'):
+        for document in instance.documents.all():
+            try:
+                document.delete()
+            except:
+                pass
 
 
 #import reversion

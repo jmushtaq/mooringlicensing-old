@@ -40,7 +40,10 @@ STATIC_URL = '/static/'
 
 
 INSTALLED_APPS += [
+<<<<<<< HEAD
     'smart_selects',
+=======
+>>>>>>> migration
     'reversion_compare',
     'bootstrap3',
     'mooringlicensing',
@@ -167,7 +170,11 @@ CONSOLE_EMAIL_BACKEND = env('CONSOLE_EMAIL_BACKEND', False)
 if CONSOLE_EMAIL_BACKEND:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+<<<<<<< HEAD
 PAYMENT_SYSTEM_ID = env('PAYMENT_SYSTEM_ID', 'S651')
+=======
+PAYMENT_SYSTEM_ID = env('PAYMENT_SYSTEM_ID', 'S517')
+>>>>>>> migration
 OSCAR_BASKET_COOKIE_OPEN = 'mooringlicensing_basket'
 PS_PAYMENT_SYSTEM_ID = PAYMENT_SYSTEM_ID
 PAYMENT_SYSTEM_PREFIX = env('PAYMENT_SYSTEM_PREFIX', PAYMENT_SYSTEM_ID.replace('S', '0'))
@@ -190,22 +197,34 @@ HTTP_HOST_FOR_TEST = 'localhost:8071'
 APPLICATION_TYPE_DCV_PERMIT = {
     'code': 'dcvp',
     'description': 'DCV Permit',
+<<<<<<< HEAD
     'fee_by_fee_constructor': True,
+=======
+>>>>>>> migration
 }
 APPLICATION_TYPE_DCV_ADMISSION = {
     'code': 'dcv',
     'description': 'DCV Admission',
+<<<<<<< HEAD
     'fee_by_fee_constructor': True,
+=======
+>>>>>>> migration
 }
 APPLICATION_TYPE_REPLACEMENT_STICKER = {
     'code': 'replacement_sticker',
     'description': 'Replacement sticker fees',
+<<<<<<< HEAD
     'fee_by_fee_constructor': False,
+=======
+>>>>>>> migration
 }
 APPLICATION_TYPE_MOORING_SWAP = {
     'code': 'mooring_swap',
     'description': 'Mooring swap fees',
+<<<<<<< HEAD
     'fee_by_fee_constructor': False,
+=======
+>>>>>>> migration
 }
 APPLICATION_TYPES = [
     APPLICATION_TYPE_DCV_PERMIT,
@@ -213,6 +232,7 @@ APPLICATION_TYPES = [
     APPLICATION_TYPE_REPLACEMENT_STICKER,
     APPLICATION_TYPE_MOORING_SWAP,
 ]
+<<<<<<< HEAD
 # Add a handler
 LOGGING['handlers']['file_mooringlicensing'] = {
     'level': 'INFO',
@@ -224,6 +244,10 @@ LOGGING['handlers']['file_mooringlicensing'] = {
 # define logger
 LOGGING['loggers']['mooringlicensing'] = {
     'handlers': ['file_mooringlicensing'],
+=======
+LOGGING['loggers']['mooringlicensing'] = {
+    'handlers': ['file'],
+>>>>>>> migration
     'level': 'INFO'
 }
 GROUP_MOORING_LICENSING_ADMIN = 'Mooring Licensing - Admin'
@@ -255,11 +279,15 @@ CODE_DAYS_BEFORE_PERIOD_MLA = 'MLApplicationSubmitNotification'
 CODE_DAYS_IN_PERIOD_MLA = 'MLApplicationSubmitPeriod'
 CODE_DAYS_FOR_SUBMIT_DOCUMENTS_MLA = 'MLADocumentsSubmitPeriod'
 CODE_DAYS_FOR_ENDORSER_AUA = 'AUAEndorseDeclinePeriod'
+<<<<<<< HEAD
 CODE_DAYS_FOR_RENEWAL_WLA = 'RenewalNotificationWLA'
 CODE_DAYS_FOR_RENEWAL_AAP = 'RenewalNotificationAAP'
 CODE_DAYS_FOR_RENEWAL_AUP = 'RenewalNotificationAUP'
 CODE_DAYS_FOR_RENEWAL_ML = 'RenewalNotificationML'
 CODE_DAYS_FOR_RENEWAL_DCVP = 'RenewalNotificationDCVP'
+=======
+CODE_DAYS_FOR_RENEWAL = 'AAPAUPMLRenewalNotification'
+>>>>>>> migration
 
 TYPES_OF_CONFIGURABLE_NUMBER_OF_DAYS = [
     {
@@ -305,6 +333,7 @@ TYPES_OF_CONFIGURABLE_NUMBER_OF_DAYS = [
         'default': 28
     },
     {
+<<<<<<< HEAD
         'code': CODE_DAYS_FOR_RENEWAL_WLA,
         'name': 'WLA Renewal notification',
         'description': 'Number of days before expiry date of the approvals to email',
@@ -333,6 +362,12 @@ TYPES_OF_CONFIGURABLE_NUMBER_OF_DAYS = [
         'name': 'DCVP Renewal notification',
         'description': 'Number of days before expiry date of the approvals to email',
         'default': 10
+=======
+        'code': CODE_DAYS_FOR_RENEWAL,
+        'name': 'AAP, AUP and ML Renewal notification',
+        'description': 'Number of days before expiry date of the approvals to email',
+        'default': 28
+>>>>>>> migration
     },
 ]
 
@@ -379,6 +414,7 @@ ORACLE_CODES = [
         'name': 'Mooring swap fees',
     },
 ]
+<<<<<<< HEAD
 # For django-smart-select
 USE_DJANGO_JQUERY = True
 ## DoT vessel rego lookup
@@ -386,3 +422,5 @@ DOT_URL=env('DOT_URL',None)
 DOT_USERNAME=env('DOT_USERNAME',None)
 DOT_PASSWORD=env('DOT_PASSWORD',None)
 DO_DOT_CHECK=env('DO_DOT_CHECK', False)
+=======
+>>>>>>> migration

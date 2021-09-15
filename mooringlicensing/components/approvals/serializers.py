@@ -690,6 +690,7 @@ class ListApprovalSerializer(serializers.ModelSerializer):
         model = Approval
         fields = (
             'id',
+            'migrated',
             'lodgement_number',
             'status',
             'internal_status',
@@ -732,6 +733,7 @@ class ListApprovalSerializer(serializers.ModelSerializer):
         # also require the following additional fields for some of the mRender functions
         datatables_always_serialize = (
             'id',
+            'migrated',
             'lodgement_number',
             'status',
             'internal_status',
@@ -1190,6 +1192,7 @@ class ListDcvPermitSerializer(serializers.ModelSerializer):
         model = DcvPermit
         fields = (
             'id',
+            'migrated',
             'lodgement_number',
             'lodgement_datetime',            
             'fee_season',            
@@ -1205,6 +1208,7 @@ class ListDcvPermitSerializer(serializers.ModelSerializer):
             )
         datatables_always_serialize = (
             'id',
+            'migrated',
             'lodgement_number',
             'lodgement_datetime',            
             'fee_season',            
@@ -1252,9 +1256,12 @@ class ListDcvPermitSerializer(serializers.ModelSerializer):
         return url
 
     def get_dcv_organisation_name(self, obj):
-        if obj.dcv_organisation:
-            return obj.dcv_organisation.name
-        else:
+        try:
+            if obj.dcv_organisation:
+                return obj.dcv_organisation.name
+            else:
+                return obj.submitter.get_full_name() + ' (P)'
+        except:
             return ''
 
     def get_status(self, obj):

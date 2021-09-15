@@ -9,32 +9,80 @@
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="pills-applicant-tab" data-toggle="pill" href="#pills-applicant" role="tab" aria-controls="pills-applicant" aria-selected="true">
+<<<<<<< HEAD
                   Applicant
+=======
+                  1. Applicant
+>>>>>>> migration
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="pills-vessels-tab" data-toggle="pill" href="#pills-vessels" role="tab" aria-controls="pills-vessels" aria-selected="false">
+<<<<<<< HEAD
                   Vessel
+=======
+                  2. Vessel
+>>>>>>> migration
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="pills-insurance-tab" data-toggle="pill" href="#pills-insurance" role="tab" aria-controls="pills-insurance" aria-selected="false">
+<<<<<<< HEAD
                   Insurance
+=======
+                  3. Insurance
+>>>>>>> migration
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="pills-mooring-tab" data-toggle="pill" href="#pills-mooring" role="tab" aria-controls="pills-mooring" aria-selected="false">
+<<<<<<< HEAD
                   Mooring
                 </a>
               </li>
               <li v-if="is_external" class="nav-item" id="li-payment">
                 <a class="nav-link disabled" id="pills-payment-tab" data-toggle="pill" href="" role="tab" aria-controls="pills-payment" aria-selected="false">
                   Payment
+=======
+                  4. Mooring
+                </a>
+              </li>
+              <!--li class="nav-item">
+                <a class="nav-link" id="pills-activities-marine-tab" data-toggle="pill" href="#pills-activities-marine" role="tab" aria-controls="pills-activities-marine" aria-selected="false">
+                  3. Activities (marine)
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-other-details-tab" data-toggle="pill" href="#pills-other-details" role="tab" aria-controls="pills-other-details" aria-selected="false">
+                  4. Other Details
+                </a>
+              </li>
+              <li v-if="is_external" class="nav-item" id="li-training">
+                <a class="nav-link" id="pills-online-training-tab" data-toggle="pill" href="#pills-online-training" role="tab" aria-controls="pills-online-training" aria-selected="false">
+                  5. Questionnaire
+                </a>
+              </li-->
+              <li v-if="is_external" class="nav-item" id="li-payment">
+                <a class="nav-link disabled" id="pills-payment-tab" data-toggle="pill" href="" role="tab" aria-controls="pills-payment" aria-selected="false">
+                  4. Payment
+>>>>>>> migration
                 </a>
               </li>
               <li v-if="is_external" class="nav-item" id="li-confirm">
                 <a class="nav-link disabled" id="pills-confirm-tab" data-toggle="pill" href="" role="tab" aria-controls="pills-confirm" aria-selected="false">
+<<<<<<< HEAD
                     Confirmation
+=======
+                    5. Confirmation
+                    <!--
+                    <span v-if="proposal.is_amendment_proposal">
+                        5. Confirmation
+                    </span>
+                    <span v-else>
+                        7. Confirmation
+                    </span>
+                    -->
+>>>>>>> migration
                 </a>
               </li>
             </ul>
@@ -61,6 +109,7 @@
                   </div>
               </div>
               <div class="tab-pane fade" id="pills-vessels" role="tabpanel" aria-labelledby="pills-vessels-tab">
+<<<<<<< HEAD
                   <div v-if="proposal">
                       <CurrentVessels 
                           :proposal=proposal
@@ -75,6 +124,12 @@
                   :id="'proposalStartVessels' + uuid"
                   :key="'proposalStartVessels' + uuid"
                   :keep_current_vessel=keep_current_vessel
+=======
+                  <Vessels 
+                  :proposal="proposal" 
+                  :profile="profileVar" 
+                  id="proposalStartVessels" 
+>>>>>>> migration
                   ref="vessels"
                   :readonly="readonly"
                   :is_internal="is_internal"
@@ -89,6 +144,7 @@
                   />
               </div>
               <div class="tab-pane fade" id="pills-mooring" role="tabpanel" aria-labelledby="pills-mooring-tab">
+<<<<<<< HEAD
                   <div v-if="proposal">
                       <CurrentMooring 
                           :proposal=proposal
@@ -103,10 +159,34 @@
                   :id="'mooringAuthorisation' + mooringAuthorisationUuid"
                   :key="'mooringAuthorisation' + mooringAuthorisationUuid"
                   :change_mooring=change_mooring
+=======
+                  <MooringAuthorisation
+                  :proposal="proposal" 
+                  id="mooring_authorisation" 
+>>>>>>> migration
                   ref="mooring_authorisation"
                   :readonly="readonly"
                   />
               </div>
+<<<<<<< HEAD
+=======
+
+              <!--div class="tab-pane fade" id="pills-activities-land" role="tabpanel" aria-labelledby="pills-activities-land-tab">
+                <ActivitiesLand :proposal="proposal" id="proposalStartActivitiesLand" :canEditActivities="canEditActivities" :proposal_parks="proposal_parks" ref="activities_land"></ActivitiesLand>
+              </div>
+              <div class="tab-pane fade" id="pills-activities-marine" role="tabpanel" aria-labelledby="pills-activities-marine-tab">
+                <ActivitiesMarine :proposal="proposal" id="proposalStartActivitiesMarine" :canEditActivities="canEditActivities" ref="activities_marine" :proposal_parks="proposal_parks"></ActivitiesMarine>
+              </div>
+              <div class="tab-pane fade" id="pills-other-details" role="tabpanel" aria-labelledby="pills-other-details-tab">
+                <OtherDetails :proposal="proposal" id="proposalStartOtherDetails" ref="other_details"></OtherDetails>
+              </div>
+              <div class="tab-pane fade" id="pills-online-training" role="tabpanel" aria-labelledby="pills-online-training-tab">
+                <OnlineTraining :proposal="proposal" id="proposalStartOnlineTraining"></OnlineTraining>
+              </div>
+              <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
+                <!-- This is a Dummy Tab -->
+              </div-->
+>>>>>>> migration
               <div class="tab-pane fade" id="pills-confirm" role="tabpanel" aria-labelledby="pills-confirm-tab">
                 <Confirmation :proposal="proposal" id="proposalStartConfirmation"></Confirmation>
               </div>
@@ -117,6 +197,7 @@
 
 <script>
     import Profile from '@/components/user/profile.vue'
+<<<<<<< HEAD
     import Applicant from '@/components/common/applicant.vue'
     import Confirmation from '@/components/common/confirmation.vue'
     import Vessels from '@/components/common/vessels.vue'
@@ -124,6 +205,22 @@
     import CurrentMooring from '@/components/common/current_mooring.vue'
     import Insurance from '@/components/common/insurance.vue'
     import MooringAuthorisation from '@/components/common/mooring_authorisation.vue'
+=======
+    //import Organisation from '@/components/external/organisations/manage.vue'
+    import Applicant from '@/components/common/applicant.vue'
+    import Confirmation from '@/components/common/confirmation.vue'
+    import Vessels from '@/components/common/vessels.vue'
+    import Insurance from '@/components/common/insurance.vue'
+    import MooringAuthorisation from '@/components/common/mooring_authorisation.vue'
+    /*
+    import Assessment from '@/components/common/tclass/assessment.vue'
+    import ActivitiesLand from '@/components/common/tclass/activities_land.vue'
+    import ActivitiesMarine from '@/components/common/tclass/activities_marine.vue'
+    import OtherDetails from '@/components/common/tclass/other_details.vue'
+    import OnlineTraining from '@/components/common/tclass/online_training.vue'
+    import Confirmation from '@/components/common/tclass/confirmation.vue'
+    */
+>>>>>>> migration
     export default {
         name: 'AuthorisedUserApplication',
         props:{
@@ -183,21 +280,40 @@
             return{
                 values:null,
                 profile: {},
+<<<<<<< HEAD
                 uuid: 0,
                 mooringAuthorisationUuid: 0,
                 keep_current_vessel: true,
                 change_mooring: true,
+=======
+>>>>>>> migration
             }
         },
         components: {
             Applicant,
             Confirmation,
             Vessels,
+<<<<<<< HEAD
             CurrentVessels,
             CurrentMooring,
             Insurance,
             MooringAuthorisation,
             Profile,
+=======
+            Insurance,
+            MooringAuthorisation,
+            /*
+            ActivitiesLand,
+            ActivitiesMarine,
+            OtherDetails,
+            OnlineTraining,
+            */
+            Profile,
+            /*
+            Organisation,
+            Assessment
+            */
+>>>>>>> migration
         },
         computed:{
             profileVar: function() {
@@ -217,6 +333,7 @@
                 }
                 return text;
             },
+<<<<<<< HEAD
         },
         methods:{
             resetCurrentVessel: function(keep) {
@@ -227,6 +344,19 @@
                 this.change_mooring = keep;
                 this.mooringAuthorisationUuid++
             },
+=======
+            /*
+            showElectoralRoll: function() {
+                let show = false;
+                if (this.proposal && ['wla', 'mla'].includes(this.proposal.application_type_code)) {
+                    show = true;
+                }
+                return show;
+            },
+            */
+        },
+        methods:{
+>>>>>>> migration
             populateProfile: function(profile) {
                 this.profile = Object.assign({}, profile);
             },

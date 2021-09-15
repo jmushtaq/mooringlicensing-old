@@ -492,6 +492,9 @@ class Proposal(DirtyFieldsMixin, RevisionedMixin):
 
     @property
     def start_date(self):
+        if self.migrated:
+            return datetime.datetime(2020,9,1).date()
+
         if self.application_fees.count() < 1:
             return None
         elif self.application_fees.count() == 1:
@@ -507,6 +510,9 @@ class Proposal(DirtyFieldsMixin, RevisionedMixin):
 
     @property
     def end_date(self):
+        if self.migrated:
+            return datetime.datetime(2021,11,30).date()
+
         if self.application_fees.count() < 1:
             return None
         elif self.application_fees.count() == 1:
@@ -1215,7 +1221,7 @@ class Proposal(DirtyFieldsMixin, RevisionedMixin):
                     if not self.applicant_address:
                         raise ValidationError('The applicant needs to have set their postal address before approving this proposal.')
 
-                    if self.application_fees.count() < 1:
+                    if self.application_fees.count() < 1 and not self.migrated:
                         raise ValidationError('Payment record not found for the Annual Admission Application: {}'.format(self))
                     elif self.application_fees.count() > 1:
                         raise ValidationError('More than 1 payment records found for the Annual Admission Application: {}'.format(self))

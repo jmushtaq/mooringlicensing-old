@@ -316,9 +316,13 @@ export default {
         if (this.$refs.waiting_list_application) {
             if (this.$refs.waiting_list_application.$refs.vessels) {
                 payload.vessel = Object.assign({}, this.$refs.waiting_list_application.$refs.vessels.vessel);
+<<<<<<< HEAD
                 //payload.proposal.dot_name = this.$refs.waiting_list_application.$refs.vessels.dotName;
                 //payload.vessel.vessel_ownership.dot_name = this.$refs.waiting_list_application.$refs.vessels.vessel.vessel_ownership.dotName;
                 payload.proposal.temporary_document_collection_id = this.$refs.waiting_list_application.$refs.vessels.temporary_document_collection_id;
+=======
+                payload.proposal.dot_name = this.$refs.waiting_list_application.$refs.vessels.dotName;
+>>>>>>> migration
             }
             if (typeof(this.$refs.waiting_list_application.$refs.profile.silentElector) === 'boolean') {
                 payload.proposal.silent_elector = this.$refs.waiting_list_application.$refs.profile.silentElector;
@@ -331,8 +335,12 @@ export default {
         } else if (this.$refs.annual_admission_application) {
             if (this.$refs.annual_admission_application.$refs.vessels) {
                 payload.vessel = Object.assign({}, this.$refs.annual_admission_application.$refs.vessels.vessel);
+<<<<<<< HEAD
                 payload.proposal.temporary_document_collection_id = this.$refs.annual_admission_application.$refs.vessels.temporary_document_collection_id;
                 //payload.vessel.vessel_ownership.dot_name = this.$refs.annual_admission_application.$refs.vessels.vessel.vessel_ownership.dotName;
+=======
+                payload.proposal.dot_name = this.$refs.annual_admission_application.$refs.vessels.dotName;
+>>>>>>> migration
             }
             if (this.$refs.annual_admission_application.$refs.insurance.selectedOption) {
                 // modify if additional proposal attributes required
@@ -342,16 +350,23 @@ export default {
         } else if (this.$refs.authorised_user_application) {
             if (this.$refs.authorised_user_application.$refs.vessels) {
                 payload.vessel = Object.assign({}, this.$refs.authorised_user_application.$refs.vessels.vessel);
+<<<<<<< HEAD
                 payload.proposal.temporary_document_collection_id = this.$refs.authorised_user_application.$refs.vessels.temporary_document_collection_id;
                 //payload.vessel.vessel_ownership.dot_name = this.$refs.authorised_user_application.$refs.vessels.vessel.vessel_ownership.dotName;
+=======
+                payload.proposal.dot_name = this.$refs.authorised_user_application.$refs.vessels.dotName;
+>>>>>>> migration
             }
             if (this.$refs.authorised_user_application.$refs.insurance.selectedOption) {
                 // modify if additional proposal attributes required
                 payload.proposal.insurance_choice = this.$refs.authorised_user_application.$refs.insurance.selectedOption;
             }
             if (this.$refs.authorised_user_application.$refs.mooring_authorisation) {
+<<<<<<< HEAD
                 payload.proposal.keep_existing_mooring = 
                     !this.$refs.authorised_user_application.$refs.mooring_authorisation.change_mooring;
+=======
+>>>>>>> migration
                 if (this.$refs.authorised_user_application.$refs.mooring_authorisation.mooringAuthPreference) {
                     payload.proposal.mooring_authorisation_preference = 
                         this.$refs.authorised_user_application.$refs.mooring_authorisation.mooringAuthPreference;
@@ -368,9 +383,13 @@ export default {
         } else if (this.$refs.mooring_licence_application) {
             if (this.$refs.mooring_licence_application.$refs.vessels) {
                 payload.vessel = Object.assign({}, this.$refs.mooring_licence_application.$refs.vessels.vessel);
+<<<<<<< HEAD
                 payload.vessel.readonly = this.$refs.mooring_licence_application.$refs.vessels.readonly;
                 payload.proposal.temporary_document_collection_id = this.$refs.mooring_licence_application.$refs.vessels.temporary_document_collection_id;
                 //payload.vessel.vessel_ownership.dot_name = this.$refs.mooring_licence_application.$refs.vessels.vessel.vessel_ownership.dotName;
+=======
+                payload.proposal.dot_name = this.$refs.mooring_licence_application.$refs.vessels.dotName;
+>>>>>>> migration
             }
             if (typeof(this.$refs.mooring_licence_application.$refs.profile.silentElector) === 'boolean') {
             //if (this.$refs.mooring_licence_application.$refs.profile.silentElector !== null) {

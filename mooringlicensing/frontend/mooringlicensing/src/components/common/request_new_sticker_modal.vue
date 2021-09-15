@@ -3,6 +3,7 @@
         <modal transition="modal fade" @ok="ok()" @cancel="cancel()" :title="title" large>
             <div class="container-fluid">
                 <alert :show.sync="showError" type="danger"><strong>{{ errorString }}</strong></alert>
+<<<<<<< HEAD
                 <div class="row form-group">
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -26,6 +27,12 @@
                             </tr>
                         </tbody>
                     </table>
+=======
+                <div class="row">
+                    <div class="col-sm-12">
+                        A sticker replacement costs $$$.
+                    </div>
+>>>>>>> migration
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-2 control-label" for="reason">Reason</label>
@@ -33,11 +40,40 @@
                         <textarea class="col-sm-9 form-control" name="reason" v-model="details.reason"></textarea>
                     </div>
                 </div>
+<<<<<<< HEAD
             </div>
             <div slot="footer">
                 <span><strong>Sticker replacement cost ${{ total_fee }}</strong></span>
                 <button type="button" v-if="processing" disabled class="btn btn-default" @click="ok"><i class="fa fa-spinner fa-spin"></i> Processing</button>
                 <button type="button" v-else class="btn btn-default" @click="ok" :disabled="!okButtonEnabled">Ok</button>
+=======
+                <div v-show="showDateOfLost" class="row form-group">
+                    <label class="col-sm-2 control-label">Date of Lost</label>
+                    <div class="col-sm-3">
+                        <div class="input-group date" ref="lostDatePicker">
+                            <input type="text" class="form-control text-center" placeholder="DD/MM/YYYY" id="lost_date_elem"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div v-show="showDateOfReturned" class="row form-group">
+                    <label class="col-sm-2 control-label">Date of Returned</label>
+                    <div class="col-sm-3">
+                        <div class="input-group date" ref="returnedDatePicker">
+                            <input type="text" class="form-control text-center" placeholder="DD/MM/YYYY" id="returned_date_elem"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div slot="footer">
+                <button type="button" v-if="processing" disabled class="btn btn-default" @click="ok"><i class="fa fa-spinner fa-spin"></i> Processing</button>
+                <button type="button" v-else class="btn btn-default" @click="ok">Ok</button>
+>>>>>>> migration
                 <button type="button" class="btn btn-default" @click="cancel">Cancel</button>
             </div>
         </modal>
@@ -65,17 +101,31 @@ export default {
             stickers: [],
             isModalOpen:false,
             action: '',
+<<<<<<< HEAD
             details: vm.getDefaultDetails(),
             processing: false,
             fee_item: null,
 
             errors: false,
             errorString: '',
+=======
+            sticker: {},
+            details: vm.getDefaultDetails(),
+            processing: false,
+
+            //form:null,
+            errors: false,
+            //validation_form: null,
+            errorString: '',
+            //successString: '',
+            //success:false,
+>>>>>>> migration
         }
     },
     watch: {
         approval_id: async function(){
             let vm = this
+<<<<<<< HEAD
             // Whenever approval_id is changed, update this.stickers
             if (vm.approval_id){
                 const ret = await vm.$http.get(helpers.add_endpoint_json(api_endpoints.approvals, vm.approval_id + '/stickers'))
@@ -85,6 +135,14 @@ export default {
                 vm.stickers = ret.body.stickers
                 console.log('vm.stickers')
                 console.log(vm.stickers)
+=======
+            // Whenever approval_id is changed, this function is called
+            console.log(vm.approval_id)
+
+            if (vm.approval_id){
+                const ret = vm.$http.get(helpers.add_endpoint_json(api_endpoints.approvals, vm.approval_id + '/stickers'))
+                console.log(ret)
+>>>>>>> migration
 
             } else {
                 vm.stickers = []
@@ -92,6 +150,7 @@ export default {
         }
     },
     computed: {
+<<<<<<< HEAD
         okButtonEnabled: function(){
             if (this.details.reason){
                 for (let sticker of this.stickers){
@@ -102,6 +161,8 @@ export default {
             }
             return false
         },
+=======
+>>>>>>> migration
         showError: function() {
             var vm = this;
             return vm.errors;
@@ -109,6 +170,7 @@ export default {
         title: function() {
             return 'New Sticker'
         },
+<<<<<<< HEAD
         total_fee: function() {
             let vm = this
             let amount = 0
@@ -120,6 +182,20 @@ export default {
             }
             return amount
         }
+=======
+        showDateOfLost: function(){
+            if (this.action === 'record_lost'){
+                return true
+            }
+            return false
+        },
+        showDateOfReturned: function(){
+            if (this.action === 'record_returned'){
+                return true
+            }
+            return false
+        },
+>>>>>>> migration
     },
     methods:{
         getDefaultDetails: function(){
@@ -136,7 +212,10 @@ export default {
             vm.$emit("sendData", {
                 "details": vm.details,
                 "approval_id": vm.approval_id,
+<<<<<<< HEAD
                 "stickers": vm.stickers,
+=======
+>>>>>>> migration
             })
         },
         cancel:function () {
@@ -191,6 +270,7 @@ export default {
                 }
             });
         },
+<<<<<<< HEAD
         fetchData: function(){
             let vm = this
 
@@ -206,6 +286,42 @@ export default {
     },
     created:function () {
         this.fetchData()
+=======
+        //addFormValidations: function() {
+        //    let vm = this;
+        //    vm.validation_form = $(vm.form).validate({
+        //        rules: {
+        //            reason:"required",
+        //        },
+        //        messages: {
+        //            arrival:"field is required",
+        //            departure:"field is required",
+        //            campground:"field is required",
+        //            campsite:"field is required"
+        //        },
+        //        showErrors: function(errorMap, errorList) {
+        //            $.each(this.validElements(), function(index, element) {
+        //                var $element = $(element);
+        //                $element.attr("data-original-title", "").parents('.form-group').removeClass('has-error');
+        //            });
+        //            // destroy tooltips on valid elements
+        //            $("." + this.settings.validClass).tooltip("destroy");
+        //            // add or update tooltips
+        //            for (var i = 0; i < errorList.length; i++) {
+        //                var error = errorList[i];
+        //                $(error.element)
+        //                    .tooltip({
+        //                        trigger: "focus"
+        //                    })
+        //                    .attr("data-original-title", error.message)
+        //                    .parents('.form-group').addClass('has-error');
+        //            }
+        //        }
+        //    });
+        //},
+    },
+    created:function () {
+>>>>>>> migration
         this.$nextTick(() => {
             this.addEventListeners();
         });

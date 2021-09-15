@@ -17,23 +17,31 @@
                                 <strong>Currently assigned to</strong><br/>
                                 <div class="form-group">
                                     <template v-if="proposal.processing_status == 'With Approver'">
+<<<<<<< HEAD
                                             <select 
                                                 ref="assigned_officer" 
                                                 :disabled="!canAction" 
                                                 class="form-control" 
                                                 v-model="proposal.assigned_approver"
                                                 @change="assignTo()">
+=======
+                                            <select ref="assigned_officer" :disabled="!canAction" class="form-control" v-model="proposal.assigned_approver">
+>>>>>>> migration
                                                 <option v-for="member in proposal.allowed_assessors" :value="member.id">{{ member.first_name }} {{ member.last_name }}</option>
                                             </select>
                                             <a v-if="canAssess && proposal.assigned_approver != proposal.current_assessor.id" @click.prevent="assignRequestUser()" class="actionBtn pull-right">Assign to me</a>
                                     </template>
                                     <template v-else>
+<<<<<<< HEAD
                                             <select 
                                                 ref="assigned_officer" 
                                                 :disabled="!canAction" 
                                                 class="form-control" 
                                                 v-model="proposal.assigned_officer"
                                                 @change="assignTo()">
+=======
+                                            <select ref="assigned_officer" :disabled="!canAction" class="form-control" v-model="proposal.assigned_officer">
+>>>>>>> migration
                                                 <option v-for="member in proposal.allowed_assessors" :value="member.id">{{ member.first_name }} {{ member.last_name }}</option>
                                             </select>
                                             <a v-if="canAssess && proposal.assigned_officer != proposal.current_assessor.id" @click.prevent="assignRequestUser()" class="actionBtn pull-right">Assign to me</a>
@@ -186,7 +194,11 @@
 import { constants } from '@/utils/hooks'
 
 export default {
+<<<<<<< HEAD
     name: 'Workflow',
+=======
+    name: 'Submission',
+>>>>>>> migration
     data: function() {
         let vm = this;
         return {
@@ -342,9 +354,12 @@ export default {
         assignRequestUser: function(){
             this.$emit('assignRequestUser')
         },
+<<<<<<< HEAD
         assignTo: function(){
             this.$emit('assignTo')
         },
+=======
+>>>>>>> migration
         toggleProposal:function(){
             this.showingProposal = !this.showingProposal;
             this.$emit('toggleProposal', this.showingProposal)

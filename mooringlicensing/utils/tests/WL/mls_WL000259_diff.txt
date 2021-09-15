@@ -1,0 +1,146 @@
+22827a22828,22885
+>     "model": "mooringlicensing.proposal",
+>     "pk": 259,
+>     "fields": {
+>         "proposal_type": 1,
+>         "assessor_data": null,
+>         "comment_data": null,
+>         "proposed_issuance_approval": null,
+>         "customer_status": "draft",
+>         "org_applicant": null,
+>         "lodgement_number": "WL000259",
+>         "lodgement_sequence": 0,
+>         "lodgement_date": null,
+>         "proxy_applicant": null,
+>         "submitter": 4,
+>         "assigned_officer": null,
+>         "assigned_approver": null,
+>         "processing_status": "draft",
+>         "prev_processing_status": null,
+>         "approval": null,
+>         "previous_application": null,
+>         "proposed_decline_status": false,
+>         "title": null,
+>         "approval_level": null,
+>         "approval_level_document": null,
+>         "approval_comment": "",
+>         "migrated": false,
+>         "vessel_details": 165,
+>         "vessel_ownership": 166,
+>         "rego_no": "20210901_JM2",
+>         "vessel_id": null,
+>         "vessel_type": "cabin_cruiser",
+>         "vessel_name": "sss",
+>         "vessel_overall_length": "12.00",
+>         "vessel_length": "12.00",
+>         "vessel_draft": "1.00",
+>         "vessel_beam": "0.00",
+>         "vessel_weight": "1.00",
+>         "berth_mooring": "abc",
+>         "percentage": 100,
+>         "individual_owner": true,
+>         "company_ownership_percentage": null,
+>         "company_ownership_name": null,
+>         "insurance_choice": "",
+>         "preferred_bay": 1,
+>         "silent_elector": false,
+>         "mooring_authorisation_preference": "",
+>         "bay_preferences_numbered": null,
+>         "site_licensee_email": null,
+>         "mooring": null,
+>         "endorser_reminder_sent": false,
+>         "allocated_mooring": null,
+>         "waiting_list_allocation": null,
+>         "dot_name": "aa",
+>         "date_invited": null,
+>         "invitee_reminder_sent": false
+>     }
+> },
+> {
+24181a24240,24244
+>     "model": "mooringlicensing.waitinglistapplication",
+>     "pk": 259,
+>     "fields": {}
+> },
+> {
+31573a31637,31644
+>     "model": "mooringlicensing.vessel",
+>     "pk": 159,
+>     "fields": {
+>         "rego_no": "20210901_jm2",
+>         "blocking_owner": null
+>     }
+> },
+> {
+33927c33998,34016
+<         "updated": "2021-09-01T05:29:53.212Z",
+---
+>         "updated": "2021-09-01T06:00:23.618Z",
+>         "exported": false
+>     }
+> },
+> {
+>     "model": "mooringlicensing.vesseldetails",
+>     "pk": 165,
+>     "fields": {
+>         "vessel_type": "cabin_cruiser",
+>         "vessel": 159,
+>         "vessel_name": "sss",
+>         "vessel_overall_length": "12.00",
+>         "vessel_length": "12.00",
+>         "vessel_draft": "1.00",
+>         "vessel_beam": "0.00",
+>         "vessel_weight": "1.00",
+>         "berth_mooring": "abc",
+>         "created": "2021-09-01T06:09:41.726Z",
+>         "updated": "2021-09-01T06:09:41.727Z",
+36178c36267,36283
+<         "updated": "2021-09-01T05:29:53.236Z",
+---
+>         "updated": "2021-09-01T06:00:23.656Z",
+>         "exported": false,
+>         "mooring_licence_end_date": null
+>     }
+> },
+> {
+>     "model": "mooringlicensing.vesselownership",
+>     "pk": 166,
+>     "fields": {
+>         "owner": 49,
+>         "vessel": 159,
+>         "company_ownership": null,
+>         "percentage": 100,
+>         "start_date": "2021-09-01T06:09:41.747Z",
+>         "end_date": null,
+>         "created": "2021-09-01T06:09:41.747Z",
+>         "updated": "2021-09-01T06:09:41.756Z",
+44656a44762,44771
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 573,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-01T06:10:16.776Z",
+>         "what": "Lodge application 259",
+>         "proposal": 259
+>     }
+> },
+> {
+48016a48132,48149
+>         ]
+>     }
+> },
+> {
+>     "model": "mooringlicensing.applicationfee",
+>     "pk": 168,
+>     "fields": {
+>         "send_invoice": false,
+>         "confirmation_sent": false,
+>         "created": "2021-09-01T06:09:42.420Z",
+>         "expiry_time": "2021-09-01T06:09:42.420Z",
+>         "proposal": 259,
+>         "payment_type": 3,
+>         "cost": "0.00",
+>         "created_by": 4,
+>         "invoice_reference": "05171001886",
+>         "fee_items": [
+>             262

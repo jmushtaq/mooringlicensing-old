@@ -1,11 +1,19 @@
 {%  extends 'mooringlicensing/emails/base_email-rottnest.html' %}
 
 {%  block content_body %}
+<<<<<<< HEAD
 <p>Dear {{ recipient.first_name }} {{ recipient.last_name}},</p>
 <p>Your {{ proposal.description }} {{ proposal.lodgement_number }} has been successfully submitted.</p>
 
     {% if payment_made %}
         <p>Please find your invoice attached to this email.</p>
+=======
+    <p>Dear {{ recipient.first_name }} {{ recipient.last_name}},</p>
+    Your {{ proposal.description }} {{ proposal.lodgement_number }} has been successfully submitted.
+
+    {% if payment_made %}
+        Please find your invoice attached to this email.
+>>>>>>> migration
     {% endif %}
 
     {% include "mooringlicensing/emails/signature-rottnest.html" %}

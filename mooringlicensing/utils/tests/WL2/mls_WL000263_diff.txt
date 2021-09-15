@@ -1,0 +1,127 @@
+7602a7603,7618
+>     "model": "mooringlicensing.communicationslogentry",
+>     "pk": 492,
+>     "fields": {
+>         "to": "jawaid.mushtaq@dbca.wa.gov.au",
+>         "fromm": "no-reply@dbca.wa.gov.au",
+>         "cc": "",
+>         "type": "email",
+>         "reference": "",
+>         "subject": "Your waiting list allocation application WL000263 has been approved",
+>         "text": "",
+>         "customer": 4,
+>         "staff": 57,
+>         "created": "2021-09-13T07:18:54.987Z"
+>     }
+> },
+> {
+23116,23117c23132,23136
+<         "proposed_issuance_approval": null,
+<         "customer_status": "with_assessor",
+---
+>         "proposed_issuance_approval": {
+>             "details": "dd",
+>             "cc_email": null
+>         },
+>         "customer_status": "approved",
+23126c23145
+<         "processing_status": "with_assessor_requirements",
+---
+>         "processing_status": "approved",
+23128c23147
+<         "approval": null,
+---
+>         "approval": 79,
+28867a28887,28893
+>     "model": "mooringlicensing.proposallogentry",
+>     "pk": 492,
+>     "fields": {
+>         "proposal": 263
+>     }
+> },
+> {
+45460a45487,45496
+>     "model": "mooringlicensing.proposaluseraction",
+>     "pk": 594,
+>     "fields": {
+>         "who": 4,
+>         "when": "2021-09-13T07:18:54.523Z",
+>         "what": "Printing Sticker for application 263",
+>         "proposal": 263
+>     }
+> },
+> {
+57232a57269,57280
+>     "model": "mooringlicensing.approvaldocument",
+>     "pk": 89,
+>     "fields": {
+>         "name": "approval-WLA000032.pdf",
+>         "description": "",
+>         "uploaded_date": "2021-09-13T07:18:54.952Z",
+>         "approval": 79,
+>         "_file": "mooringlicensing/proposals/263/approvals/approval-WLA000032.pdf",
+>         "can_delete": false
+>     }
+> },
+> {
+58416a58465,58478
+>     "model": "mooringlicensing.approvalhistory",
+>     "pk": 75,
+>     "fields": {
+>         "reason": "new",
+>         "approval": 79,
+>         "vessel_ownership": 169,
+>         "proposal": 263,
+>         "start_date": "2021-09-13T07:18:54.383Z",
+>         "end_date": null,
+>         "approval_letter": null,
+>         "stickers": []
+>     }
+> },
+> {
+60937a61000,61044
+> },
+> {
+>     "model": "mooringlicensing.approval",
+>     "pk": 79,
+>     "fields": {
+>         "lodgement_number": "WLA000032",
+>         "status": "current",
+>         "internal_status": "waiting",
+>         "licence_document": 89,
+>         "cover_letter_document": null,
+>         "replaced_by": null,
+>         "current_proposal": 263,
+>         "renewal_document": null,
+>         "renewal_sent": false,
+>         "issue_date": "2021-09-13T07:18:54.383Z",
+>         "wla_queue_date": "2021-09-13T07:18:54.383Z",
+>         "original_issue_date": "2021-09-13",
+>         "start_date": "2021-09-13",
+>         "expiry_date": null,
+>         "surrender_details": null,
+>         "suspension_details": null,
+>         "submitter": 4,
+>         "org_applicant": null,
+>         "proxy_applicant": null,
+>         "extracted_fields": null,
+>         "cancellation_details": "",
+>         "extend_details": "",
+>         "cancellation_date": null,
+>         "set_to_cancel": false,
+>         "set_to_suspend": false,
+>         "set_to_surrender": false,
+>         "renewal_count": 0,
+>         "migrated": false,
+>         "extended": false,
+>         "expiry_notice_sent": false,
+>         "exported": false,
+>         "wla_order": 3,
+>         "vessel_nomination_reminder_sent": false,
+>         "reissued": false
+>     }
+> },
+> {
+>     "model": "mooringlicensing.waitinglistallocation",
+>     "pk": 79,
+>     "fields": {}

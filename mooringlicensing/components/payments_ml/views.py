@@ -696,15 +696,6 @@ class ApplicationFeeSuccessView(TemplateView):
                     else:
                         # When WLA / AAA
                         send_application_processed_email(proposal, 'paid', request)
-
-                else:
-                    logger.error('Invoice payment status is {}'.format(invoice.payment_status))
-                    raise
-
-                application_fee.save()
-                request.session[self.LAST_APPLICATION_FEE_ID] = application_fee.id
-                delete_session_application_invoice(request.session)
-
                 context = {
                     'proposal': proposal,
                     'submitter': submitter,

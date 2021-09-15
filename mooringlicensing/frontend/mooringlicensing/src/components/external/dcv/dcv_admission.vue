@@ -217,8 +217,13 @@ export default {
             let enabled = true
             if(this.paySubmitting)
                 enabled = false
+<<<<<<< HEAD
             //if(!this.is_valid_rego_no)
             //    enabled = false
+=======
+            if(!this.is_valid_rego_no)
+                enabled = false
+>>>>>>> migration
             if(!this.is_valid_vessel_name)
                 enabled = false
             if(!this.dcv_admission.skipper)

@@ -3,8 +3,11 @@ module.exports = {
     AA_PROPOSAL: 'aaa',
     AU_PROPOSAL: 'aua',
     ML_PROPOSAL: 'mla',
+<<<<<<< HEAD
     DCV_PERMIT_PROPOSAL: 'dcvp',
     DCV_ADMISSION_PROPOSAL: 'dcv',
+=======
+>>>>>>> migration
 
     WL_APPROVAL: 'wla',
     AA_APPROVAL: 'aap',

@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 ## execute in shell_plus with "import mooringlicensing.utils.ml_csvwriter"
 
+=======
+>>>>>>> migration
 import csv
 from datetime import datetime
 import pytz

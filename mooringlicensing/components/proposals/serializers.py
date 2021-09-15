@@ -466,6 +466,7 @@ class ListProposalSerializer(BaseProposalSerializer):
         model = Proposal
         fields = (
                 'id',
+                'migrated',
                 # 'application_type',
                 'application_type_dict',
                 'proposal_type',
@@ -508,6 +509,7 @@ class ListProposalSerializer(BaseProposalSerializer):
         # also require the following additional fields for some of the mRender functions
         datatables_always_serialize = (
                 'id',
+                'migrated',
                 'proposal_type',
                 # 'activity',
                 # 'title',
@@ -622,7 +624,6 @@ class SaveWaitingListApplicationSerializer(serializers.ModelSerializer):
                 'id',
                 'preferred_bay_id',
                 'silent_elector',
-                'temporary_document_collection_id',
                 )
         read_only_fields=('id',)
 
