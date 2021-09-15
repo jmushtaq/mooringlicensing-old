@@ -1590,6 +1590,7 @@ class DcvPermit(RevisionedMixin):
     end_date = models.DateField(null=True, blank=True)  # This is the season.end_date when payment
     dcv_vessel = models.ForeignKey(DcvVessel, blank=True, null=True, related_name='dcv_permits')
     dcv_organisation = models.ForeignKey(DcvOrganisation, blank=True, null=True)
+    migrated=models.BooleanField(default=False)
 
     def get_target_date(self, applied_date):
         return applied_date
@@ -1650,6 +1651,9 @@ class DcvPermit(RevisionedMixin):
 
     class Meta:
         app_label = 'mooringlicensing'
+
+    def __str__(self):
+        return f'{self.lodgement_number} (M)' if self.migrated else f'{self.lodgement_number}' 
 
 
 def update_dcv_admission_doc_filename(instance, filename):
