@@ -294,17 +294,10 @@ export default {
                         data: 'id',
                         mRender: function (data, type, full) {
                             let disabled_str = ''
-<<<<<<< HEAD
                             if (vm.readonly || !full.mooring_licence_current || !full.suitable_for_mooring){
                                 disabled_str = ' disabled '
                             }
                             if (full.checked){
-=======
-                            if (vm.readonly){
-                                disabled_str = ' disabled '
-                            }
-                            if (full.checked && full.suitable_for_mooring){
->>>>>>> migration
                                 return '<input type="checkbox" class="mooring_on_approval_checkbox" data-mooring-on-approval-id="' + full.id + '"' + disabled_str + ' checked/>'
                             } else {
                                 return '<input type="checkbox" class="mooring_on_approval_checkbox" data-mooring-on-approval-id="' + full.id + '"' + disabled_str + '/>'
@@ -583,12 +576,8 @@ export default {
             this.validation_form.resetForm();
         },
         fetchMooringBays: async function() {
-<<<<<<< HEAD
             //const res = await this.$http.get(api_endpoints.mooring_bays);
             const res = await this.$http.get(api_endpoints.mooring_bays_lookup);
-=======
-            const res = await this.$http.get(api_endpoints.mooring_bays);
->>>>>>> migration
             for (let bay of res.body) {
                 this.mooringBays.push(bay)
             }
@@ -834,10 +823,7 @@ export default {
                             type: 'public',
                             mooring_bay_id: vm.approval.mooring_bay_id,
                             vessel_details_id: vm.proposal.vessel_details_id,
-<<<<<<< HEAD
                             aup_id: vm.proposal.approval_id,
-=======
->>>>>>> migration
                         }
                         return query;
                     },
@@ -880,7 +866,6 @@ export default {
         vm.addFormValidations();
         this.$nextTick(()=>{
             //vm.eventListeners();
-<<<<<<< HEAD
             /*
             // AUP reissue
             if (!this.proposal.reissued) {
@@ -888,9 +873,6 @@ export default {
             }
             */
             //this.approval.mooring_bay_id = null;
-=======
-            this.approval = Object.assign({}, this.proposal.proposed_issuance_approval);
->>>>>>> migration
             this.initialiseMooringLookup();
             this.addEventListeners();
             if (this.authorisedUserApplication) {

@@ -35,10 +35,7 @@
                     @issueProposal="issueProposal"
                     @declineProposal="declineProposal"
                     @assignRequestUser="assignRequestUser"
-<<<<<<< HEAD
                     @assignTo="assignTo"
-=======
->>>>>>> migration
                 />
 
             </div>
@@ -413,7 +410,6 @@ export default {
         },
         proposedApproval: function(){
             console.log('proposedApproval')
-<<<<<<< HEAD
             /*
             if(this.proposal.proposed_issuance_approval == null){
             }
@@ -421,22 +417,6 @@ export default {
             this.uuid++;
             this.$nextTick(() => {
                 this.$refs.proposed_approval.approval = this.proposal.proposed_issuance_approval != null ? helpers.copyObject(this.proposal.proposed_issuance_approval) : {};
-=======
-            this.$refs.proposed_approval.approval = this.proposal.proposed_issuance_approval != null ? helpers.copyObject(this.proposal.proposed_issuance_approval) : {};
-            if(this.proposal.proposed_issuance_approval == null){
-                //var test_approval={
-                //    'cc_email': this.proposal.referral_email_list
-                //};
-                //this.$refs.proposed_approval.approval=helpers.copyObject(test_approval);
-                // this.$refs.proposed_approval.$refs.bcc_email=this.proposal.referral_email_list;
-            }
-            //this.$refs.proposed_approval.submitter_email=helpers.copyObject(this.proposal.submitter_email);
-            // if(this.proposal.applicant.email){
-            //     this.$refs.proposed_approval.applicant_email=helpers.copyObject(this.proposal.applicant.email);
-            // }
-            this.uuid++;
-            this.$nextTick(() => {
->>>>>>> migration
                 this.$refs.proposed_approval.isModalOpen = true;
             });
         },
@@ -469,7 +449,6 @@ export default {
                     'error'
                 )
             } else {
-<<<<<<< HEAD
                 this.uuid++;
                 this.$nextTick(() => {
                     this.$refs.proposed_approval.approval = this.proposal.proposed_issuance_approval != null ? helpers.copyObject(this.proposal.proposed_issuance_approval) : {};
@@ -477,26 +456,6 @@ export default {
                     this.$refs.proposed_approval.isApprovalLevelDocument = this.isApprovalLevelDocument;
                     this.$refs.proposed_approval.isModalOpen = true;
                 });
-=======
-                this.$refs.proposed_approval.approval = this.proposal.proposed_issuance_approval != null ? helpers.copyObject(this.proposal.proposed_issuance_approval) : {};
-                this.$refs.proposed_approval.state = 'final_approval';
-                this.$refs.proposed_approval.isApprovalLevelDocument = this.isApprovalLevelDocument;
-                if(this.proposal.proposed_issuance_approval != null && this.proposal.proposed_issuance_approval.start_date!=null){
-                    var start_date=new Date();
-                    start_date=moment(this.proposal.proposed_issuance_approval.start_date, 'DD/MM/YYYY')
-                    $(this.$refs.proposed_approval.$refs.start_date).data('DateTimePicker').date(start_date);
-                }
-                if(this.proposal.proposed_issuance_approval != null && this.proposal.proposed_issuance_approval.expiry_date!=null){
-                    var expiry_date=new Date();
-                    expiry_date=moment(this.proposal.proposed_issuance_approval.expiry_date, 'DD/MM/YYYY')
-                    $(this.$refs.proposed_approval.$refs.due_date).data('DateTimePicker').date(expiry_date);
-                }
-                //this.$refs.proposed_approval.submitter_email=helpers.copyObject(this.proposal.submitter_email);
-                // if(this.proposal.applicant.email){
-                //     this.$refs.proposed_approval.applicant_email=helpers.copyObject(this.proposal.applicant.email);
-                // }
-                this.$refs.proposed_approval.isModalOpen = true;
->>>>>>> migration
             }
 
         },
@@ -665,13 +624,10 @@ export default {
             }
         },
         switchStatus: function(status){
-<<<<<<< HEAD
             console.log('in switchStatus')
             console.log(this.proposal.processing_status)
             console.log(status)
 
-=======
->>>>>>> migration
             let vm = this;
             //vm.save_wo();
             //let vm = this;

@@ -60,10 +60,7 @@ export default {
         isRepeatable:Boolean,
         readonly:Boolean,
         documentActionUrl: String,
-<<<<<<< HEAD
         temporaryDocumentCollectionId: Number,
-=======
->>>>>>> migration
 
         // For optional text button
         replace_button_by_text: {
@@ -118,7 +115,6 @@ export default {
             },
             deep: true
         },
-<<<<<<< HEAD
         temporaryDocumentCollectionId: function() {
             // read in prop value
             if (this.temporaryDocumentCollectionId) {
@@ -127,8 +123,6 @@ export default {
             }
         },
 
-=======
->>>>>>> migration
     },
 
     methods:{
@@ -243,21 +237,15 @@ export default {
                 // If temporary_document, create TemporaryDocumentCollection object and allow document_action_url to update
                 let res = await Vue.http.post(this.document_action_url)
                 this.temporary_document_collection_id = res.body.id
-<<<<<<< HEAD
                 await this.$emit('update-temp-doc-coll-id', this.temporary_document_collection_id);
                 /*
-=======
->>>>>>> migration
                 await this.$emit('update-temp-doc-coll-id',
                     {
                         "temp_doc_id": this.temporary_document_collection_id,
                         "input_name": this.name,
                     }
                 );
-<<<<<<< HEAD
                 */
-=======
->>>>>>> migration
                 this.$nextTick(async () => {
                     // must emit event here
                     this.handleChange(e);

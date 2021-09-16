@@ -9,11 +9,7 @@
                             <div class="col-sm-12" style="margin-left:20px">
                                 <div class="form-group">
                                     <label>Waiting List</label>
-<<<<<<< HEAD
                                     <div v-if="wlaApprovals.length<=1 && newWlaAllowed">
-=======
-                                    <div v-if="wlaApprovals.length<=1">
->>>>>>> migration
                                         <div v-for="(application_type, index) in wlaChoices">
                                             <input 
                                             type="radio" 
@@ -237,10 +233,7 @@ export default {
         auaMultiple: [],
         mlMultiple: [],
         creatingProposal: false,
-<<<<<<< HEAD
         newWlaAllowed: false,
-=======
->>>>>>> migration
         //site_url: (api_endpoints.site_url.endsWith("/")) ? (api_endpoints.site_url): (api_endpoints.site_url + "/"),
     }
   },
@@ -520,13 +513,10 @@ export default {
             this.application_types.push(l)
         }
     },
-<<<<<<< HEAD
     fetchWlaAllowed: async function(){
         const response = await this.$http.get(api_endpoints.wla_allowed);
         this.newWlaAllowed = response.body.wla_allowed;
     },
-=======
->>>>>>> migration
 
   },
   mounted: async function() {
@@ -534,10 +524,7 @@ export default {
     await this.fetchApplicationTypes();
     //await this.fetchExistingMooringLicences();
     await this.fetchExistingLicences();
-<<<<<<< HEAD
     await this.fetchWlaAllowed();
-=======
->>>>>>> migration
     this.parseApprovals();
     this.parseWla();
     this.parseAaa();

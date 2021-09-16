@@ -85,7 +85,7 @@ class WaitingListMigration(object):
 
     def migrate(self):
 
-        submitter = EmailUser.objects.get(email='jawaid.mushtaq@dbca.wa.gov.au')
+        #submitter = EmailUser.objects.get(email='jawaid.mushtaq@dbca.wa.gov.au')
         expiry_date = datetime.date(2021,11,30)
 
         address_list = []
@@ -104,8 +104,8 @@ class WaitingListMigration(object):
         added = []
         errors = []
         with transaction.atomic():
-            #for idx, record in enumerate(self.waitlist[390:], 1):
-            for idx, record in enumerate(self.waitlist, 1):
+            for idx, record in enumerate(self.waitlist[:15], 1):
+            #for idx, record in enumerate(self.waitlist, 1):
                 try: 
                     #import ipdb; ipdb.set_trace()
                     pers_no = record.get('PersNo')
@@ -211,7 +211,7 @@ class WaitingListMigration(object):
                         vessel_type=vessel_type,
                         vessel=vessel,
                         vessel_name=vessel_name,
-                        vessel_overall_length=vessel_overall_length,
+                        #vessel_overall_length=vessel_overall_length,
                         vessel_length=vessel_overall_length,
                         vessel_draft=vessel_draft,
                         vessel_weight= vessel_weight,
@@ -227,7 +227,7 @@ class WaitingListMigration(object):
                         rego_no=rego_no,
                         vessel_type=vessel_type,
                         vessel_name=vessel_name,
-                        vessel_overall_length=vessel_overall_length,
+                        #vessel_overall_length=vessel_overall_length,
                         vessel_length=vessel_overall_length,
                         vessel_draft=vessel_draft,
                         #vessel_beam='',
@@ -260,7 +260,7 @@ class WaitingListMigration(object):
                         #start_date = datetime.datetime.strptime(date_applied, '%Y-%m-%d %H:%M:%S').date(),
                         start_date = start_date,
                         expiry_date = expiry_date,
-                        submitter=submitter,
+                        submitter=user,
                         migrated=True,
                         wla_order=position_no,
                     )

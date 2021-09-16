@@ -6,22 +6,13 @@ from rest_framework import routers
 
 import mooringlicensing.components.approvals.api
 from mooringlicensing import views
-<<<<<<< HEAD
 from mooringlicensing.components.approvals.views import DcvAdmissionFormView
-=======
-from mooringlicensing.components.approvals.views import DcvPermitFormView, DcvAdmissionFormView
->>>>>>> migration
 from mooringlicensing.components.payments_ml.views import ApplicationFeeView, ApplicationFeeSuccessView, InvoicePDFView, \
     DcvPermitFeeView, DcvPermitFeeSuccessView, DcvPermitPDFView, ConfirmationView, DcvAdmissionFeeView, \
     DcvAdmissionFeeSuccessView, DcvAdmissionPDFView, ApplicationFeeExistingView, StickerReplacementFeeView, \
     StickerReplacementFeeSuccessView
 from mooringlicensing.components.proposals import views as proposal_views
 from mooringlicensing.components.organisations import views as organisation_views
-<<<<<<< HEAD
-=======
-#from mooringlicensing.components.bookings import views as booking_views
-
->>>>>>> migration
 from mooringlicensing.components.payments_ml import api as payments_api
 from mooringlicensing.components.proposals import api as proposal_api
 from mooringlicensing.components.approvals import api as approval_api
@@ -31,10 +22,6 @@ from mooringlicensing.components.proposals.views import AuthorisedUserApplicatio
 from mooringlicensing.components.users import api as users_api
 from mooringlicensing.components.organisations import api as org_api
 from mooringlicensing.components.main import api as main_api
-<<<<<<< HEAD
-=======
-#from mooringlicensing.components.bookings import api as booking_api
->>>>>>> migration
 from ledger.urls import urlpatterns as ledger_patterns
 
 # API patterns
@@ -87,10 +74,7 @@ router.register(r'dcv_permit', mooringlicensing.components.approvals.api.DcvPerm
 router.register(r'dcv_admission', mooringlicensing.components.approvals.api.DcvAdmissionViewSet)
 router.register(r'company', proposal_api.CompanyViewSet)
 router.register(r'companyownership', proposal_api.CompanyOwnershipViewSet)
-<<<<<<< HEAD
 router.register(r'temporary_document', main_api.TemporaryDocumentCollectionViewSet)
-=======
->>>>>>> migration
 
 api_patterns = [
     url(r'^api/profile$', users_api.GetProfile.as_view(), name='get-profile'),
@@ -99,18 +83,11 @@ api_patterns = [
     url(r'^api/filtered_users$', users_api.UserListFilterView.as_view(), name='filtered_users'),
     url(r'^api/filtered_organisations$', org_api.OrganisationListFilterView.as_view(), name='filtered_organisations'),
     url(r'^api/filtered_payments$', approval_api.ApprovalPaymentFilterViewSet.as_view(), name='filtered_payments'),
-<<<<<<< HEAD
     url(r'^api/application_types$', proposal_api.GetApplicationTypeDescriptions.as_view(), name='get-application-type-descriptions'),
     url(r'^api/application_types_dict$', proposal_api.GetApplicationTypeDict.as_view(), name='get-application-type-dict'),
     url(r'^api/applicants_dict$', proposal_api.GetApplicantsDict.as_view(), name='get-applicants-dict'),
     url(r'^api/payment_system_id$', proposal_api.GetPaymentSystemId.as_view(), name='get-payment-system-id'),
     url(r'^api/fee_item_sticker_replacement$', proposal_api.GetStickerReplacementFeeItem.as_view(), name='get-sticker-replacement-fee-item'),
-=======
-    #url(r'^api/proposal_type$', proposal_api.GetProposalType.as_view(), name='get-proposal-type'),
-    url(r'^api/application_types$', proposal_api.GetApplicationTypeDescriptions.as_view(), name='get-application-type-descriptions'),
-    url(r'^api/application_types_dict$', proposal_api.GetApplicationTypeDict.as_view(), name='get-application-type-dict'),
-    url(r'^api/applicants_dict$', proposal_api.GetApplicantsDict.as_view(), name='get-applicants-dict'),
->>>>>>> migration
     url(r'^api/vessel_rego_nos$', proposal_api.GetVesselRegoNos.as_view(), name='get-vessel_rego-nos'),
     url(r'^api/mooring_lookup$', proposal_api.GetMooring.as_view(), name='get-mooring'),
     url(r'^api/mooring_lookup_per_bay$', proposal_api.GetMooringPerBay.as_view(), name='get-mooring-per-bay'),
@@ -119,24 +96,16 @@ api_patterns = [
     url(r'^api/person_lookup$', users_api.GetPerson.as_view(), name='get-person'),
     url(r'^api/company_names$', proposal_api.GetCompanyNames.as_view(), name='get-company-names'),
     url(r'^api/dcv_vessel_rego_nos$', proposal_api.GetDcvVesselRegoNos.as_view(), name='get-dcv-vessel_rego-nos'),
-<<<<<<< HEAD
     url(r'^api/dcv_organisations$', proposal_api.GetDcvOrganisations.as_view(), name='get-dcv-organisations'),
-=======
->>>>>>> migration
     url(r'^api/fee_configurations$', payments_api.GetFeeConfigurations.as_view(), name='get-fee-configurations'),
     url(r'^api/vessel_types_dict$', proposal_api.GetVesselTypesDict.as_view(), name='get-vessel-types-dict'),
     url(r'^api/insurance_choices_dict$', proposal_api.GetInsuranceChoicesDict.as_view(), name='get-insurance-choices-dict'),
     url(r'^api/application_statuses_dict$', proposal_api.GetApplicationStatusesDict.as_view(), name='get-application-statuses-dict'),
     url(r'^api/approval_types_dict$', approval_api.GetApprovalTypeDict.as_view(), name='get-approval-type-dict'),
-<<<<<<< HEAD
     url(r'^api/wla_allowed$', approval_api.GetWlaAllowed.as_view(), name='get-wla-allowed'),
     url(r'^api/approval_statuses_dict$', approval_api.GetApprovalStatusesDict.as_view(), name='get-approval-statuses-dict'),
     url(r'^api/fee_seasons_dict$', approval_api.GetFeeSeasonsDict.as_view(), name='get-fee-seasons-dict'),
     url(r'^api/daily_admission_url$', approval_api.GetDailyAdmissionUrl.as_view(), name='get-daily-admission-url'),
-=======
-    url(r'^api/approval_statuses_dict$', approval_api.GetApprovalStatusesDict.as_view(), name='get-approval-statuses-dict'),
-    url(r'^api/fee_seasons_dict$', approval_api.GetFeeSeasonsDict.as_view(), name='get-fee-seasons-dict'),
->>>>>>> migration
     url(r'^api/seasons_for_dcv_dict$', payments_api.GetSeasonsForDcvPermitDict.as_view(), name='get-approval-statuses-dict'),
     url(r'^api/compliance_statuses_dict$', compliances_api.GetComplianceStatusesDict.as_view(), name='get-compliance-statuses-dict'),
     url(r'^api/mooring_statuses_dict$', proposal_api.GetMooringStatusesDict.as_view(), name='get-mooring-statuses-dict'),
@@ -160,10 +129,7 @@ urlpatterns = [
     #url(r'^admin/', include(mooringlicensing_admin_site.urls)),
     #url(r'^admin/', mooringlicensing_admin_site.urls),
     url(r'^ledger/admin/', admin.site.urls, name='ledger_admin'),
-<<<<<<< HEAD
     url(r'^chaining/', include('smart_selects.urls')),
-=======
->>>>>>> migration
     url(r'', include(api_patterns)),
     url(r'^$', views.MooringLicensingRoutingView.as_view(), name='ds_home'),
     url(r'^contact/', views.MooringLicensingContactView.as_view(), name='ds_contact'),

@@ -1,16 +1,6 @@
 <template lang="html">
     <div id="vessels">
         <FormSection label="Registration Details" Index="registration_details">
-<<<<<<< HEAD
-=======
-            <div v-if="mooringLicenceCurrentVesselDisplayText" class="row form-group">
-                <div class="col-sm-9">
-                    {{ mooringLicenceCurrentVesselDisplayText }}
-                    <s>Below you can enter the details of a new vessel to be added to the mooring licence if required, otherwise leave the vessel details blank.</s>
-                    <strong>BB note: As discussed, for all renewal/amendments I am currently prefilling the vessel (unless sold) from the last application in the chain of applications linked to an approval.</strong>
-                </div>
-            </div>
->>>>>>> migration
             <div class="row form-group">
                 <label for="vessel_search" class="col-sm-3 control-label">Vessel registration number</label>
                 <div class="col-sm-9">
@@ -124,7 +114,6 @@
                 <label for="" class="col-sm-3 control-label">Name as shown on DoT registration papers</label>
                 <!--label for="" class="col-sm-3 control-label">Permanent or usual place</label-->
                 <div class="col-sm-9">
-<<<<<<< HEAD
                     <!--input :readonly="readonly" type="text" class="col-sm-9 form-control" id="dot_name" placeholder="" v-model="dotName" required=""/-->
                     <input 
                     :readonly="readonly" 
@@ -133,9 +122,6 @@
                     id="dot_name" 
                     placeholder="" 
                     v-model="vessel.vessel_ownership.dot_name" required=""/>
-=======
-                    <input :readonly="readonly" type="text" class="col-sm-9 form-control" id="dot_name" placeholder="" v-model="dotName" required=""/>
->>>>>>> migration
                 </div>
             </div>
 
@@ -148,7 +134,6 @@
             </div>
             <div v-if="showDotRegistrationPapers" class="row form-group">
                 <label for="" class="col-sm-3 control-label">Copy of DoT registration papers</label>
-<<<<<<< HEAD
                 <div v-if="!existingVesselOwnership" class="col-sm-9">
                     <FileField 
                         :readonly="readonly"
@@ -166,22 +151,12 @@
                         :readonly="readonly"
                         ref="vessel_registration_document"
                         name="vessel_registration_document"
-=======
-                <div class="col-sm-9">
-                    <FileField 
-                        :readonly="readonly"
-                        ref="vessel_registration_documents"
-                        name="vessel-registration-documents"
->>>>>>> migration
                         :isRepeatable="true"
                         :documentActionUrl="vesselRegistrationDocumentUrl"
                         :replace_button_by_text="true"
                     />
                 </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> migration
             </div>
             <div v-if="applicationTypeCodeMLA" class="row form-group">
                 <label for="" class="col-sm-3 control-label">Certified Hull Identification Number (HIN), if not already provided on the registration papers</label>
@@ -205,20 +180,12 @@
                     <input :readonly="readonly" type="number" min="1" class="form-control" id="vessel_length" placeholder="" v-model="vessel.vessel_details.vessel_length" required=""/>
                 </div>
             </div>
-<<<<<<< HEAD
             <!--div class="row form-group">
-=======
-            <div class="row form-group">
->>>>>>> migration
                 <label for="" class="col-sm-3 control-label">Overall length of vessel</label>
                 <div class="col-sm-2">
                     <input :readonly="readonly" type="number" min="1" class="form-control" id="overall_length" placeholder="" v-model="vessel.vessel_details.vessel_overall_length" required=""/>
                 </div>
-<<<<<<< HEAD
             </div-->
-=======
-            </div>
->>>>>>> migration
             <div class="row form-group">
                 <label for="" class="col-sm-3 control-label">Displacement tonnage</label>
                 <div class="col-sm-2">
@@ -276,11 +243,8 @@ from '@/utils/hooks'
                 vesselTypes: [],
                 vesselRegoNos: [],
                 selectedRego: null,
-<<<<<<< HEAD
                 //temporary_document_collection_list: [],
                 temporary_document_collection_id: null,
-=======
->>>>>>> migration
             }
         },
         components:{
@@ -306,7 +270,6 @@ from '@/utils/hooks'
             editingVessel:{
                 type: Boolean,
             },
-<<<<<<< HEAD
             is_internal: {
               type: Boolean,
               default: false
@@ -314,12 +277,6 @@ from '@/utils/hooks'
             keep_current_vessel: {
               type: Boolean,
             },
-=======
-            is_internal:{
-              type: Boolean,
-              default: false
-            },
->>>>>>> migration
         },
         /*
         watch: {
@@ -332,14 +289,11 @@ from '@/utils/hooks'
         },
         */
         computed: {
-<<<<<<< HEAD
             existingVesselOwnership: function() {
                 if (this.vessel.vessel_ownership && this.vessel.vessel_ownership.id) {
                     return true;
                 }
             },
-=======
->>>>>>> migration
             mooringLicenceCurrentVesselDisplayText: function() {
                 let displayText = '';
                 if (this.proposal && this.proposal.mooring_licence_vessels && this.proposal.mooring_licence_vessels.length) {
@@ -348,7 +302,6 @@ from '@/utils/hooks'
                 }
                 return displayText;
             },
-<<<<<<< HEAD
             currentVesselDisplayText: function() {
                 let displayText = '';
                 if (this.proposal && this.proposal.approval_vessel_rego_no) {
@@ -372,8 +325,6 @@ from '@/utils/hooks'
             },
 
             /*
-=======
->>>>>>> migration
             showDotRegistrationPapers: function() {
                 let retVal = false;
                 if (this.proposal && this.proposal.id && this.companyOwner) {
@@ -381,10 +332,7 @@ from '@/utils/hooks'
                 }
                 return retVal;
             },
-<<<<<<< HEAD
             */
-=======
->>>>>>> migration
             /*
             companyOwnerPercentage: function() {
                 if (this.vessel.vessel_ownership.company_ownership.percentage) {
@@ -442,7 +390,6 @@ from '@/utils/hooks'
             },
             vesselRegistrationDocumentUrl: function() {
                 let url = '';
-<<<<<<< HEAD
                 if (this.existingVesselOwnership) {
                     url = helpers.add_endpoint_join(
                         api_endpoints.vesselownership,
@@ -450,13 +397,6 @@ from '@/utils/hooks'
                     )
                 } else {
                     url = 'temporary_document';
-=======
-                if (this.proposal && this.proposal.id) {
-                    url = helpers.add_endpoint_join(
-                        api_endpoints.proposal,
-                        this.proposal.id + '/process_vessel_registration_document/'
-                    )
->>>>>>> migration
                 }
                 return url;
             },
@@ -483,7 +423,6 @@ from '@/utils/hooks'
 
         },
         methods:{
-<<<<<<< HEAD
             addToTemporaryDocumentCollectionList(temp_doc_id) {
                 this.temporary_document_collection_id = temp_doc_id;
             },
@@ -499,8 +438,6 @@ from '@/utils/hooks'
 
             resetCurrentVessel: function() {
             },
-=======
->>>>>>> migration
             retrieveIndividualOwner: async function() {
                 console.log("retrieve individual owner")
                 if (this.individualOwner && this.vessel.id) {
@@ -887,11 +824,7 @@ from '@/utils/hooks'
                     let vessel_details = {};
                     vessel_details.vessel_type = this.proposal.vessel_type;
                     vessel_details.vessel_name = this.proposal.vessel_name;
-<<<<<<< HEAD
                     //vessel_details.vessel_overall_length = this.proposal.vessel_overall_length;
-=======
-                    vessel_details.vessel_overall_length = this.proposal.vessel_overall_length;
->>>>>>> migration
                     vessel_details.vessel_length = this.proposal.vessel_length;
                     vessel_details.vessel_draft = this.proposal.vessel_draft;
                     vessel_details.vessel_beam = this.proposal.vessel_beam;
@@ -915,10 +848,7 @@ from '@/utils/hooks'
                 let vessel_ownership = {};
                 vessel_ownership.percentage = this.proposal.percentage;
                 vessel_ownership.individual_owner = this.proposal.individual_owner;
-<<<<<<< HEAD
                 vessel_ownership.dot_name = this.proposal.dot_name;
-=======
->>>>>>> migration
                 this.vessel.vessel_ownership = Object.assign({}, vessel_ownership);
                 // company ownership
                 this.vessel.vessel_ownership.company_ownership = {};
@@ -966,13 +896,8 @@ from '@/utils/hooks'
         mounted: function () {
             this.$nextTick(async () => {
                 await this.fetchVesselTypes();
-<<<<<<< HEAD
                 if (this.proposal && this.keep_current_vessel) {
                     // fetches vessel data from proposal (saved as draft)
-=======
-                //if (this.proposal && this.proposal.proposal_type.code==='new') {
-                if (this.proposal) {
->>>>>>> migration
                     await this.fetchVessel();
                 } else if (!this.proposal && !this.creatingVessel) {
                     // route.params.vessel_id in this case is a vesselownership id
@@ -983,13 +908,9 @@ from '@/utils/hooks'
                 this.initialiseCompanyNameSelect();
                 this.addEventListeners();
                 // read in Renewal/Amendment vessel details
-<<<<<<< HEAD
                 if (!this.keep_current_vessel) {
                     // pass
                 } else if (this.proposal && this.proposal.pending_amendment_request) {
-=======
-                if (this.proposal && this.proposal.pending_amendment_request) {
->>>>>>> migration
                     // ensure an Amendment which has been sent back to draft with request amendment does not have the logic applied below
                     console.log("amendment request")
                     // pass
@@ -1032,7 +953,6 @@ from '@/utils/hooks'
                     }
                 }
                 // read in dot_name
-<<<<<<< HEAD
                 if (this.vessel.vessel_ownership && this.vessel.vessel_ownership.dot_name) {
                     this.dotName = this.vessel.vessel_ownership.dot_name;
                 }
@@ -1048,11 +968,6 @@ from '@/utils/hooks'
                     this.dotName = this.proposal.dot_name;
                 }
                 */
-=======
-                if (this.proposal && this.proposal.dot_name) {
-                    this.dotName = this.proposal.dot_name;
-                }
->>>>>>> migration
             });
         },
         created: function() {

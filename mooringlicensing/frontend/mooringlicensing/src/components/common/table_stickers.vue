@@ -141,7 +141,6 @@ export default {
             return {
                 data: "approval",
                 orderable: true,
-<<<<<<< HEAD
                 searchable: true,
                 visible: true,
                 'render': function(row, type, full){
@@ -155,13 +154,6 @@ export default {
 
                 },
                 name: 'approval__lodgement_number'
-=======
-                searchable: false,
-                visible: true,
-                'render': function(row, type, full){
-                    return '<a href="/internal/approval/' + full.approval.id + '">' + full.approval.lodgement_number + '</a>'
-                }
->>>>>>> migration
             }
         },
         column_printing_company: function(){
@@ -205,22 +197,16 @@ export default {
                 searchable: false,
                 visible: true,
                 'render': function(row, type, full){
-<<<<<<< HEAD
                     console.log('column_year')
                     console.log(full.dcv_permit)
-=======
->>>>>>> migration
                     if (full.fee_constructor){
                         if (full.fee_constructor.fee_season){
                             return full.fee_constructor.fee_season.name
                         }
-<<<<<<< HEAD
                     } else if (full.dcv_permit) {
                         if (full.dcv_permit.fee_season){
                             return full.dcv_permit.fee_season.name
                         }
-=======
->>>>>>> migration
                     }
                     return ''
                 }
@@ -635,10 +621,7 @@ export default {
     font-family: 'Courier New', Courier monospace;
     margin: 5px;
 }
-<<<<<<< HEAD
 .dcv_permit_lodgement_number {
     padding: 8px 10px;
 }
-=======
->>>>>>> migration
 </style>

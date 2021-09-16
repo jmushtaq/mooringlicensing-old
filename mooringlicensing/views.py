@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import logging
 from confy import env
 from django.contrib.auth.decorators import login_required
@@ -10,47 +9,15 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from mooringlicensing.helpers import is_internal
 from mooringlicensing.forms import *
 from mooringlicensing.components.proposals.models import (
-=======
-from django.http import Http404, HttpResponse, HttpResponseRedirect, JsonResponse
-from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404, redirect
-from django.template.response import TemplateResponse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
-from django.views.generic.base import View, TemplateView
-from django.conf import settings
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.views.decorators.csrf import csrf_protect
-from django.core.exceptions import ValidationError
-from django.db import transaction
-
-from datetime import datetime, timedelta
-
-from mooringlicensing.helpers import is_internal
-from mooringlicensing.forms import *
-from mooringlicensing.components.proposals.models import (#Referral, 
->>>>>>> migration
         Proposal, 
         HelpPage
         )
 from mooringlicensing.components.compliances.models import Compliance
-<<<<<<< HEAD
 from django.core.management import call_command
 from mooringlicensing.components.main.utils import add_cache_control
 
 
 logger = logging.getLogger('mooringlicensing')
-=======
-
-from ledger.checkout.utils import create_basket_session, create_checkout_session, place_order_submission, get_cookie_basket
-from django.core.management import call_command
-import json
-from decimal import Decimal
-from mooringlicensing.components.main.utils import add_cache_control
-
-import logging
-logger = logging.getLogger('payment_checkout')
->>>>>>> migration
 
 
 class InternalView(UserPassesTestMixin, TemplateView):
@@ -113,10 +80,7 @@ class InternalComplianceView(DetailView):
     model = Compliance
     template_name = 'mooringlicensing/dash/index.html'
 
-<<<<<<< HEAD
 
-=======
->>>>>>> migration
 class MooringLicensingRoutingView(TemplateView):
     template_name = 'mooringlicensing/index.html'
 
@@ -128,7 +92,6 @@ class MooringLicensingRoutingView(TemplateView):
         kwargs['form'] = LoginForm
         return super(MooringLicensingRoutingView, self).get(*args, **kwargs)
 
-<<<<<<< HEAD
     def get_context_data(self, **kwargs):
         context = super(MooringLicensingRoutingView, self).get_context_data(**kwargs)
         daily_admission_page_url = env('DAILY_ADMISSION_PAGE_URL', '')
@@ -146,14 +109,6 @@ class MooringLicensingFurtherInformationView(TemplateView):
     template_name = 'mooringlicensing/further_info.html'
 
 
-=======
-class MooringLicensingContactView(TemplateView):
-    template_name = 'mooringlicensing/contact.html'
-
-class MooringLicensingFurtherInformationView(TemplateView):
-    template_name = 'mooringlicensing/further_info.html'
-
->>>>>>> migration
 class InternalProposalView(DetailView):
     #template_name = 'mooringlicensing/index.html'
     model = Proposal

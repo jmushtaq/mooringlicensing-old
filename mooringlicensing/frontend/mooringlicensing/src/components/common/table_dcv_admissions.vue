@@ -3,7 +3,6 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-<<<<<<< HEAD
                     <label for="">Organisation</label>
                     <select class="form-control" v-model="filterDcvOrganisation">
                         <option value="All">All</option>
@@ -33,15 +32,6 @@
                     </div>
                 </div>
             </div>
-=======
-                    <label for="">Type</label>
-                    <select class="form-control" v-model="filterApplicationType">
-                        <option value="All">All</option>
-                        <option v-for="type in application_types" :value="type.code">{{ type.description }}</option>
-                    </select>
-                </div>
-            </div>
->>>>>>> migration
         </div>
 
         <div v-if="is_external" class="row">
@@ -86,30 +76,18 @@ export default {
             datatable_id: 'admissions-datatable-' + vm._uid,
 
             // selected values for filtering
-<<<<<<< HEAD
             filterDcvOrganisation: null,
             filterDateFrom: null,
             filterDateTo: null,
 
             // filtering options
             dcv_organisations: [],
-=======
-            filterApplicationType: null,
-            filterApplicationStatus: null,
-            filterApplicant: null,
-
-            // filtering options
-            application_types: [],
-            application_statuses: [],
-            applicants: [],
->>>>>>> migration
         }
     },
     components:{
         datatable
     },
     watch: {
-<<<<<<< HEAD
         filterDcvOrganisation: function() {
             let vm = this;
             vm.$refs.admissions_datatable.vmDataTable.draw();
@@ -122,25 +100,6 @@ export default {
             let vm = this;
             vm.$refs.admissions_datatable.vmDataTable.draw();
         },
-=======
-        filterApplicationStatus: function() {
-            let vm = this;
-            vm.$refs.application_datatable.vmDataTable.draw();  // This calls ajax() backend call.  This line is enough to search?  Do we need following lines...?
-            //if (vm.filterApplicationStatus != 'All') {
-            //    vm.$refs.application_datatable.vmDataTable.column('status:name').search('').draw();
-            //} else {
-            //    vm.$refs.application_datatable.vmDataTable.column('status:name').search(vm.filterApplicationStatus).draw();
-            //}
-        },
-        filterApplicationType: function() {
-            let vm = this;
-            vm.$refs.application_datatable.vmDataTable.draw();  // This calls ajax() backend call.  This line is enough to search?  Do we need following lines...?
-        },
-        filterApplicant: function(){
-            let vm = this;
-            vm.$refs.application_datatable.vmDataTable.draw();  // This calls ajax() backend call.  This line is enough to search?  Do we need following lines...?
-        }
->>>>>>> migration
     },
     computed: {
         is_external: function() {
@@ -241,7 +200,6 @@ export default {
                 'render': function(row, type, full){
                     let ret = ''
                     for (let arrival of full.arrivals){
-<<<<<<< HEAD
                         if (arrival){
                             ret += '<div>' + moment(arrival.arrival_date).format('DD/MM/YYYY') + '</div>'
                         }
@@ -249,9 +207,6 @@ export default {
                             ret += ''
                         }
 
-=======
-                        ret += '<div>' + arrival.arrival_date + '</div>'
->>>>>>> migration
                     }
                     return ret
                 }
@@ -304,11 +259,6 @@ export default {
                 searchable: true,
                 visible: true,
                 'render': function(row, type, full){
-<<<<<<< HEAD
-=======
-                    console.log('---')
-                    console.log(full)
->>>>>>> migration
                     /*
                     let links = '';
                     if (!vm.is_external){
@@ -372,17 +322,9 @@ export default {
 
                     // adding extra GET params for Custom filtering
                     "data": function ( d ) {
-<<<<<<< HEAD
                         d.filter_dcv_organisation_id = vm.filterDcvOrganisation
                         d.filter_date_from = vm.filterDateFrom
                         d.filter_date_to = vm.filterDateTo
-=======
-                        /*
-                        d.filter_application_type = vm.filterApplicationType
-                        d.filter_application_status = vm.filterApplicationStatus
-                        d.filter_applicant = vm.filterApplicant
-                        */
->>>>>>> migration
                     }
                 },
                 dom: 'lBfrtip',
@@ -416,7 +358,6 @@ export default {
                 name: 'apply_proposal'
             })
         },
-<<<<<<< HEAD
         fetchFilterLists: function(){
             let vm = this;
 
@@ -469,70 +410,6 @@ export default {
                     el_fr.data('DateTimePicker').maxDate(false)
                 }
             })
-=======
-        discardProposal: function(proposal_id) {
-            let vm = this;
-            swal({
-                title: "Discard Application",
-                text: "Are you sure you want to discard this proposal?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonText: 'Discard Application',
-                confirmButtonColor:'#dc3545'
-            }).then(() => {
-                vm.$http.delete(api_endpoints.discard_proposal(proposal_id))
-                .then((response) => {
-                    console.log('response: ')
-                    console.log(response)
-                    swal(
-                        'Discarded',
-                        'Your proposal has been discarded',
-                        'success'
-                    )
-                    //vm.$refs.application_datatable.vmDataTable.ajax.reload();
-                    vm.$refs.admissions_datatable.vmDataTable.draw();
-                }, (error) => {
-                    console.log(error);
-                });
-            },(error) => {
-
-            });
-        },
-        fetchFilterLists: function(){
-            let vm = this;
-
-            // Application Types
-            vm.$http.get(api_endpoints.application_types_dict+'?apply_page=False').then((response) => {
-                vm.application_types = response.body
-            },(error) => {
-                console.log(error);
-            })
-
-            // Application Statuses
-            vm.$http.get(api_endpoints.application_statuses_dict).then((response) => {
-                vm.application_statuses = response.body
-            },(error) => {
-                console.log(error);
-            })
-
-            // Applicant
-            if (vm.is_internal){
-                vm.$http.get(api_endpoints.applicants_dict).then((response) => {
-                    console.log(response.body)
-                    vm.applicants = response.body
-                },(error) => {
-                    console.log(error);
-                })
-            }
-        },
-        addEventListeners: function(){
-            let vm = this
-            vm.$refs.admissions_datatable.vmDataTable.on('click', 'a[data-discard-proposal]', function(e) {
-                e.preventDefault();
-                let id = $(this).attr('data-discard-proposal');
-                vm.discardProposal(id)
-            });
->>>>>>> migration
         },
     },
     created: function(){
